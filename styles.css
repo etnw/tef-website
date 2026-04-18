@@ -314,8 +314,8 @@ blockquote {
   padding: 0 1.75rem;
 }
 .oxblood-panel .eyebrow { color: var(--dark-muted-2); }
-.oxblood-panel h2 { color: var(--cream); }
-.oxblood-panel h2 em { color: var(--ink); }
+.oxblood-panel h2 { color: var(--ink); }
+.oxblood-panel h2 em { color: var(--cream); }
 .oxblood-panel p { color: var(--dark-muted-2); }
 .oxblood-panel h3 { color: var(--cream-soft); }
 

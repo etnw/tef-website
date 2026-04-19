@@ -318,6 +318,14 @@ blockquote {
 .oxblood-panel h2 em { color: var(--cream); }
 .oxblood-panel p { color: var(--dark-muted-2); }
 .oxblood-panel h3 { color: var(--cream-soft); }
+.oxblood-panel a {
+  color: var(--cream-soft);
+  border-bottom-color: rgba(245, 236, 216, 0.4);
+}
+.oxblood-panel a:hover {
+  color: var(--cream);
+  border-bottom-color: var(--cream);
+}
 
 .serve-list {
   margin-top: 2.5rem;

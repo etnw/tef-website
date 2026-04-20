@@ -653,8 +653,16 @@ footer {
   .hero { padding: 4rem 1.5rem 5.5rem; min-height: 72vh; }
   section { padding: 4.5rem 0; }
   #contact { padding: 4.5rem 1.5rem 5rem; }
-  .nav { padding: 1.25rem 1.25rem 1rem; }
-  .nav ul { gap: 1rem; }
+  .nav { padding: 0.9rem 1.25rem 0.9rem; }
+  .nav-inner {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1.1rem;
+  }
   .nav ul a { font-size: 0.68rem; letter-spacing: 0.18em; }
   .brand { font-size: 1.2rem; letter-spacing: 0.1em; }
   .container { padding: 0 1.5rem; }

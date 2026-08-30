@@ -1,0 +1,46 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  section: CollectionEntry<'sections'>;
+}
+const { section } = Astro.props;
+const { eyebrow, title, layout, intro, outro, items } = section.data;
+
+// Maps a layout name onto the existing CSS classes from styles.css.
+const listClass = {
+  serve: 'serve-list',
+  items: 'items two-col',
+  phases: 'phases',
+  not: 'not-list',
+}[layout];
+
+const itemClass = {
+  serve: 'serve-item',
+  items: 'item',
+  phases: 'phase',
+  not: 'not-item',
+}[layout];
+---
+<span class="eyebrow">{eyebrow}</span>
+<h2 set:html={title} />
+{intro && <p>{intro}</p>}
+<div class={listClass}>
+  {items.map((item) =>
+    layout === 'phases' ? (
+      <div class={itemClass}>
+        <div class="phase-num">{item.number}</div>
+        <div>
+          <h3>{item.heading} {item.when && <span class="when">{item.when}</span>}</h3>
+          <p>{item.body}</p>
+        </div>
+      </div>
+    ) : (
+      <div class={itemClass}>
+        <h3>{item.heading}</h3>
+        <p>{item.body}</p>
+      </div>
+    )
+  )}
+</div>
+{outro && <p class="phases-note">{outro}</p>}

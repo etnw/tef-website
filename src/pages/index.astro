@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContentSection from '../components/ContentSection.astro';
+import { getEntry } from 'astro:content';
+
+// Sections are placed explicitly rather than looped, because the bespoke
+// "problem", "partners" and "contact" blocks are interleaved between them.
+const who = (await getEntry('sections', 'who'))!;
+const offering = (await getEntry('sections', 'offering'))!;
+const why = (await getEntry('sections', 'why'))!;
+const how = (await getEntry('sections', 'how'))!;
+const notDifferent = (await getEntry('sections', 'not'))!;
+const investors = (await getEntry('sections', 'investors'))!;
+---
+<BaseLayout
+  title="The Engine Factory: The commercial engine for deep-tech companies"
+  description="Pipeline, pricing, customer contracts, and the team to run it. We de-risk commercial execution and compress the time between funding and first revenue for semiconductor and deep-tech companies."
+>
+  <div class="dark-wrap">
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>The commercial engine for <em>deep-tech</em> companies.</h1>
+        <hr class="rule">
+        <p class="hero-lede">Pipeline, pricing, customer contracts, and the team to run it. We de-risk commercial execution and compress the time between funding and first revenue.</p>
+      </div>
+    </section>
+  </div>
+
+  <main>
+    <div class="container">
+
+      <section id="problem">
+        <span class="eyebrow">The challenge</span>
+        <h2>Brilliant technology does not <em>sell itself</em>.</h2>
+        <p>We hear the same conversations every week:</p>
+        <div class="quotes">
+          <blockquote>"We raised €8M, we have a working chip, and no idea how to sell it."</blockquote>
+          <blockquote>"Our investors are asking about pipeline and we don't even have a CRM."</blockquote>
+          <blockquote>"We hired a sales guy from a large semiconductor company. Six months in, nothing closed. He is used to inheriting a $200M installed base, not building from zero."</blockquote>
+        </div>
+        <p>The pattern is the same every time. The R&amp;D worked. The funding came through. But nobody in the building has ever priced a semiconductor, structured a distribution agreement, or closed a production contract with a Tier 1 customer.</p>
+        <p>Every month without a commercial function is runway burned with no pipeline to show for it. Competitors are locking in design wins. The window between <em>funded</em> and <em>too late</em> is shorter than most founders think.</p>
+      </section>
+
+      <ContentSection section={who} />
+
+      <ContentSection section={offering} />
+
+      <section id="partners" class="oxblood-panel">
+        <div class="panel-inner">
+          <span class="eyebrow">Partners</span>
+          <h2>A <em>network</em> of senior operators.</h2>
+          <p>The Engine Factory is built as a network of senior semiconductor commercial operators, each independent, each bringing deep expertise in a specific market, domain, or geography. A partner in Munich working on a European market entry. A partner in Detroit who knows the automotive Tier 1 landscape. A partner in Silicon Valley close to the venture ecosystem. When a client needs capability beyond one partner, the network delivers it.</p>
+          <p>We are in the founding phase. New partners are joining in 2026. If you are a senior commercial operator in semiconductor or deep-tech and want to know more about joining, <a href="#contact">get in touch</a>.</p>
+          <p class="bio-link" style="margin-top: 2rem;"><a href="/partners/">Meet the team →</a></p>
+        </div>
+      </section>
+
+      <ContentSection section={why} />
+
+      <ContentSection section={how} />
+
+      <ContentSection section={notDifferent} />
+
+      <ContentSection section={investors} />
+
+    </div>
+  </main>
+
+  <section id="contact">
+    <div class="contact-inner">
+      <span class="eyebrow">Contact</span>
+      <h2>Let's talk.</h2>
+      <p>We work with semiconductor and deep-tech companies that are past the R&amp;D phase and ready to build a commercial engine. If that sounds like you, or if you want to know more about joining the partner network, reach out.</p>
+
+      <p class="contact-cta"><a href="https://zeeg.me/etiennewinkelmullerzeeg/introcall" class="btn" target="_blank" rel="noopener">Book an appointment</a></p>
+
+      <div class="contact-grid">
+        <div class="contact-block">
+          <span class="label">Direct</span>
+          <div class="name">Etienne Winkelmuller</div>
+          <div class="name-sub">Founder</div>
+          <address>
+            <a href="mailto:etnw.mywebsite@pm.me">etnw.mywebsite@pm.me</a><br>
+            <a href="tel:+498955273295">+49 89 55273295</a><br>
+            <a href="https://linkedin.com/in/etiennewinkelmuller" target="_blank" rel="noopener">LinkedIn</a>
+          </address>
+        </div>
+        <div class="contact-block">
+          <span class="label">Office</span>
+          <address>
+            Sendlinger Strasse 29<br>
+            80331 Munich<br>
+            Germany
+          </address>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

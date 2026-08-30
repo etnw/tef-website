@@ -1,0 +1,21 @@
+---
+interface Props {
+  /** Adds the legal-nav modifier used by the Impressum page. */
+  legal?: boolean;
+}
+const { legal = false } = Astro.props;
+---
+<header class={legal ? 'nav legal-nav' : 'nav'}>
+  <div class="nav-inner">
+    <a href="/#top" class="brand">The Engine Factory</a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="/#offering">Offering</a></li>
+        <li><a href="/#how">Approach</a></li>
+        <li><a href="/#investors">Investors</a></li>
+        <li><a href="/partners/">Partners</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

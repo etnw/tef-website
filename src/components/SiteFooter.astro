@@ -1,0 +1,15 @@
+---
+interface Props {
+  /** Impressum links back to the home page instead of to itself. */
+  backHome?: boolean;
+}
+const { backHome = false } = Astro.props;
+---
+<footer>
+  <div class="footer-inner">
+    <div>© 2026 ETNW Consulting, Munich.</div>
+    {backHome
+      ? <div><a href="/">← Back to home</a></div>
+      : <div><a href="/impressum/">Impressum</a></div>}
+  </div>
+</footer>

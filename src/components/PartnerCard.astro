@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+
+interface Props {
+  partner: CollectionEntry<'partners'>;
+}
+const { partner } = Astro.props;
+const { name, role, location, linkedin, photo } = partner.data;
+const { Content } = await render(partner);
+---
+<div class={photo ? 'bio bio-with-portrait' : 'bio'}>
+  {photo && (
+    <figure class="bio-portrait">
+      <img src={photo} alt={name} loading="lazy" />
+    </figure>
+  )}
+  <div class="bio-body">
+    <div class="bio-head">
+      <div class="bio-name">{name}</div>
+      <div class="bio-role">{role} — {location}</div>
+    </div>
+    <Content />
+    {linkedin && (
+      <p class="bio-link">
+        <a href={linkedin} target="_blank" rel="noopener">LinkedIn →</a>
+      </p>
+    )}
+  </div>
+</div>

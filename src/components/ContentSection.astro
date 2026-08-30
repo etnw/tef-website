@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import SectionInner from './SectionInner.astro';
+
+interface Props {
+  section: CollectionEntry<'sections'>;
+}
+const { section } = Astro.props;
+const { panel } = section.data;
+// The collection entry id is the filename, which matches the section anchor id.
+const id = section.id;
+---
+<section id={id} class={panel ? 'oxblood-panel' : undefined}>
+  {panel ? (
+    <div class="panel-inner">
+      <SectionInner section={section} />
+    </div>
+  ) : (
+    <SectionInner section={section} />
+  )}
+</section>

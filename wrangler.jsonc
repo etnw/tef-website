@@ -8,6 +8,9 @@
   "assets": {
     "directory": "./dist"
   },
+  // Non-production branch builds are uploaded with `wrangler versions upload`, which
+  // creates a version without promoting it. This is what serves it at a preview URL.
+  "preview_urls": true,
   "compatibility_flags": [
     "nodejs_compat"
   ]

@@ -1,20 +1,37 @@
 ---
 interface Props {
-  /** Adds the legal-nav modifier used by the Impressum page. */
+  /** Adds the legal-nav modifier used by the Impressum and Datenschutz pages. */
   legal?: boolean;
 }
 const { legal = false } = Astro.props;
+
+// Approach and Investors are home page anchors, not pages.
+const links = [
+  { href: '/services/', label: 'Services' },
+  { href: '/#approach', label: 'Approach' },
+  { href: '/#investors', label: 'Investors' },
+  { href: '/partners/', label: 'Partners' },
+  { href: '/contact/', label: 'Contact' },
+];
+
+const path = Astro.url.pathname;
 ---
 <header class={legal ? 'nav legal-nav' : 'nav'}>
   <div class="nav-inner">
-    <a href="/#top" class="brand">The Engine Factory</a>
+    <a href="/" class="brand">The Engine Factory</a>
     <nav aria-label="Primary">
       <ul>
-        <li><a href="/#offering">Offering</a></li>
-        <li><a href="/#how">Approach</a></li>
-        <li><a href="/#investors">Investors</a></li>
-        <li><a href="/partners/">Partners</a></li>
-        <li><a href="/#contact">Contact</a></li>
+        {links.map(({ href, label }) => {
+          // Anchor links are only "current" on the home page, and only the page part
+          // of a path is compared, so /partners/join/ still marks Partners.
+          const target = href.split('#')[0];
+          const current = target !== '/' ? path.startsWith(target) : path === '/';
+          return (
+            <li>
+              <a href={href} aria-current={current ? 'page' : undefined}>{label}</a>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   </div>

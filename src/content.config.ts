@@ -10,11 +10,17 @@ const partners = defineCollection({
     name: z.string(),
     role: z.string(),
     location: z.string(),
+    // Optional second line under the role, e.g. a partner's own company.
+    entity: z.string().optional(),
     // Optional one line summary for cards and meta tags. The full bio is the markdown body.
     summary: z.string().optional(),
+    // Omitted where the URL has not been supplied yet. The partners page renders the
+    // label without a link in that case rather than guessing an address.
     linkedin: z.string().url().optional(),
     photo: z.string().optional(),
-    order: z.number().optional(),
+    domains: z.string(),
+    coverage: z.string(),
+    order: z.number(),
   }),
 });
 
@@ -36,6 +42,8 @@ const sections = defineCollection({
         z.object({
           heading: z.string(),
           body: z.string(),
+          // Deep link to the matching section on the services page.
+          href: z.string().optional(),
           // "phases" layout only.
           when: z.string().optional(),
           number: z.string().optional(),
@@ -45,4 +53,30 @@ const sections = defineCollection({
   }),
 });
 
-export const collections = { partners, sections };
+// One file per section of the single services page. The same collection drives both
+// the sticky section nav and the sections themselves, so the two cannot drift apart.
+const services = defineCollection({
+  loader: glob({ base: './src/content/services', pattern: '**/*.md' }),
+  schema: z.object({
+    title: z.string(),
+    // The anchor id. These URLs are sent to prospects on their own, so they are set
+    // explicitly here rather than derived from the filename.
+    anchor: z.string(),
+    // Shorter label for the sticky nav, where the full title does not fit.
+    navLabel: z.string(),
+    lead: z.string(),
+    order: z.number(),
+    // Labelled paragraphs: "Delivered", "Applies when", "Not included", "Basis",
+    // "Sequence". Which labels appear varies by service.
+    blocks: z
+      .array(
+        z.object({
+          label: z.string(),
+          body: z.string(),
+        })
+      )
+      .min(1),
+  }),
+});
+
+export const collections = { partners, sections, services };

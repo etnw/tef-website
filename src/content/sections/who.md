@@ -4,7 +4,7 @@ title: "The <em>moment</em> that matters most."
 layout: "serve"
 panel: true
 order: 2
-intro: "Semiconductor and deep-tech companies. The technology is ready. The funding is in place. The market is waiting."
+intro: "Semiconductor and deep-tech companies. The technology works. The funding is in place. The commercial function does not yet exist, or is not sized to the opportunity in front of it."
 items:
   - heading: "Funded startups"
     body: "Bringing their first product to market."

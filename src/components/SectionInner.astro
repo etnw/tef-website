@@ -37,7 +37,9 @@ const itemClass = {
       </div>
     ) : (
       <div class={itemClass}>
-        <h3>{item.heading}</h3>
+        <h3>
+          {item.href ? <a href={item.href}>{item.heading}</a> : item.heading}
+        </h3>
         <p>{item.body}</p>
       </div>
     )

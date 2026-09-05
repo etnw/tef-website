@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PartnerCard from '../../components/PartnerCard.astro';
+import { getCollection } from 'astro:content';
+
+const partners = (await getCollection('partners')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+
+const domainCoverage = [
+  ['Automotive systems', 'Etienne Winkelmuller'],
+  ['Radar and mmWave', 'Etienne Winkelmuller'],
+  ['Timing', 'Etienne Winkelmuller, Rich Kapusta'],
+  ['Industrial', 'Etienne Winkelmuller, Rich Kapusta'],
+  ['Aerospace and defense', 'Etienne Winkelmuller'],
+  ['Power and energy systems', 'Rich Kapusta'],
+  ['Wireless and connectivity', 'Rich Kapusta'],
+  ['Medical', 'Rich Kapusta'],
+  ['High-volume consumer', 'Rich Kapusta'],
+  ['Test, ATE, and OSAT', 'Michael Matauschek'],
+  ['Optical inspection and yield', 'Michael Matauschek'],
+];
+
+const regionCoverage = [
+  ['Europe', 'Etienne Winkelmuller, Michael Matauschek'],
+  ['North America', 'Rich Kapusta'],
+];
+---
+<BaseLayout
+  title="Partners — The Engine Factory"
+  description="A network of independent senior semiconductor commercial operators. Etienne Winkelmuller in Munich, Rich Kapusta in San Jose, and Michael Matauschek in Munich, covering Europe and North America."
+>
+  <div class="dark-wrap">
+    <section class="hero hero-compact">
+      <div class="hero-inner">
+        <span class="eyebrow">Partners</span>
+        <h1>A <em>network</em> of senior operators.</h1>
+        <hr class="rule">
+        <p class="hero-lede">In the room with you.</p>
+      </div>
+    </section>
+  </div>
+
+  <main>
+    <div class="container">
+
+      <section id="network">
+        <p class="lede-para">The Engine Factory is a network of independent senior commercial operators. Each partner runs their own entity, brings their own domain expertise and customer network, and works to a shared methodology and quality standard. When an engagement needs capability beyond one partner, another partner delivers it.</p>
+      </section>
+
+      <section id="people" class="partner-list">
+        {partners.map((partner) => <PartnerCard partner={partner} />)}
+      </section>
+
+      <section id="coverage">
+        <span class="eyebrow">Coverage</span>
+        <h2>Who covers <em>what</em>.</h2>
+
+        <div class="coverage-tables">
+          <div class="table-wrap">
+            <table class="coverage-table">
+              <thead>
+                <tr><th scope="col">Domain</th><th scope="col">Partner</th></tr>
+              </thead>
+              <tbody>
+                {domainCoverage.map(([domain, partner]) => (
+                  <tr><th scope="row">{domain}</th><td>{partner}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-wrap">
+            <table class="coverage-table">
+              <thead>
+                <tr><th scope="col">Region</th><th scope="col">Partner</th></tr>
+              </thead>
+              <tbody>
+                {regionCoverage.map(([region, partner]) => (
+                  <tr><th scope="row">{region}</th><td>{partner}</td></tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="join">
+        <span class="eyebrow">Join the network</span>
+        <h2>We are <em>selective</em> about who carries this brand into a customer meeting.</h2>
+        <p class="section-more"><a href="/partners/join/">See what we look for →</a></p>
+      </section>
+
+    </div>
+  </main>
+</BaseLayout>

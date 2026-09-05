@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  service: CollectionEntry<'services'>;
+}
+const { service } = Astro.props;
+const { title, anchor, lead, blocks } = service.data;
+---
+<section id={anchor} class="service">
+  <h2>{title}</h2>
+  <p class="service-lead">{lead}</p>
+  <dl class="service-blocks">
+    {blocks.map(({ label, body }) => (
+      <div class="service-block">
+        <dt>{label}</dt>
+        <dd>{body}</dd>
+      </div>
+    ))}
+  </dl>
+</section>

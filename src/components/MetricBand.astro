@@ -1,0 +1,28 @@
+---
+// Figures quoted on the home page. Each is a result delivered by a single partner,
+// which the footnote makes explicit.
+const metrics = [
+  { value: '25+ years', label: 'in semiconductors, every partner' },
+  { value: '$100M', label: 'business unit run at 25% profit before tax' },
+  { value: '$0 to $10M+', label: 'product line built from zero' },
+  { value: '10x', label: 'go-to-market pipeline growth in the first year' },
+  { value: '$100M+', label: 'opportunity funnel created' },
+  { value: '$30M+', label: 'design-in pipeline across 1,000+ target accounts' },
+];
+---
+<section class="metric-band" aria-label="Track record">
+  <div class="metric-inner">
+    <dl class="metric-grid">
+      {metrics.map(({ value, label }) => (
+        <div class="metric">
+          <dt class="metric-value">{value}</dt>
+          <dd class="metric-label">{label}</dd>
+        </div>
+      ))}
+    </dl>
+    <p class="metric-note">
+      Each figure is a result delivered by one partner, not a network total.
+      Individual records on the <a href="/partners/">partners page</a>.
+    </p>
+  </div>
+</section>

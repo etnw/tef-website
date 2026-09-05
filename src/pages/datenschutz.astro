@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Placeholder only. The brief is explicit that privacy policy text must not be
+// generated: it needs qualified legal review before it exists. The route, the page,
+// and the agreed section list are built so the drafted text can drop straight in.
+//
+// Two implementation decisions this text will have to describe, both already made:
+//   - Fonts are self-hosted from this origin. No Google Fonts or other CDN request is
+//     made by the site, so section 8 has nothing external to declare.
+//   - No analytics and no cookies are set by this site, so there is no consent banner.
+const sections = [
+  'Verantwortlicher',
+  'Allgemeine Hinweise zur Datenverarbeitung',
+  'Hosting (Cloudflare, US transfer position, legal basis)',
+  'Server-Logfiles (what is logged, retention, Art. 6(1)(f) GDPR)',
+  'Cookies',
+  'Kontaktaufnahme per E-Mail und Telefon (Art. 6(1)(b) and (f))',
+  'Terminbuchung über Zeeg (third-party processor, data passed, DPA status)',
+  'Externe Schriftarten und Ressourcen',
+  'Webanalyse',
+  'Betroffenenrechte',
+  'Speicherdauer',
+  'Änderungen dieser Datenschutzerklärung',
+];
+---
+<BaseLayout
+  title="Datenschutzerklärung — The Engine Factory"
+  description="Datenschutzerklärung für theenginefactory.com. Diese Seite befindet sich derzeit in Vorbereitung."
+  lang="de"
+  noindex={true}
+  legal={true}
+>
+  <div class="legal-wrap">
+    <main>
+      <article class="legal">
+        <h1>Datenschutzerklärung</h1>
+        <hr class="legal-intro-rule">
+
+        <p class="placeholder-note">
+          Diese Datenschutzerklärung wird derzeit erstellt und rechtlich geprüft. Bis zur
+          Veröffentlichung erreichen Sie den Verantwortlichen für Fragen zum Datenschutz
+          über die im <a href="/impressum/">Impressum</a> angegebenen Kontaktdaten.
+        </p>
+
+        <h2>Vorgesehene Gliederung</h2>
+        <ol class="placeholder-list">
+          {sections.map((section) => <li>{section}</li>)}
+        </ol>
+
+        <p class="placeholder">Stand: in Vorbereitung.</p>
+      </article>
+    </main>
+  </div>
+</BaseLayout>

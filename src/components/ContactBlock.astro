@@ -1,0 +1,46 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  /** The home page renders this as a section with its own heading; /contact/ uses the
+      page hero for the heading instead. */
+  heading?: boolean;
+}
+const { heading = true } = Astro.props;
+---
+<section id="contact">
+  <div class="contact-inner">
+    {heading && (
+      <>
+        <span class="eyebrow">Contact</span>
+        <h2>Let's talk.</h2>
+      </>
+    )}
+    <p>We work with semiconductor and deep-tech companies that are past the R&amp;D phase and ready to build a commercial engine. If that sounds like you, or if you want to know more about joining the partner network, reach out.</p>
+
+    <p class="contact-cta">
+      <a href={site.booking} class="btn" target="_blank" rel="noopener">Book an appointment</a>
+    </p>
+
+    <div class="contact-grid">
+      <div class="contact-block">
+        <span class="label">Direct</span>
+        <div class="name">{site.founder}</div>
+        <div class="name-sub">Founder</div>
+        <address>
+          <a href={`mailto:${site.email}`}>{site.email}</a><br>
+          <a href={`tel:${site.phoneE164}`}>{site.phone}</a><br>
+          <a href={site.founderLinkedin} target="_blank" rel="noopener">LinkedIn</a>
+        </address>
+      </div>
+      <div class="contact-block">
+        <span class="label">Office</span>
+        <address>
+          {site.address.street}<br>
+          {site.address.postalCode} {site.address.city}<br>
+          {site.address.country}
+        </address>
+      </div>
+    </div>
+  </div>
+</section>

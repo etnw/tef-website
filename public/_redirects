@@ -1,0 +1,7 @@
+# The pre-Astro site served flat .html files, so /partners.html and /impressum.html
+# were live URLs. Astro now emits directory-style pages, so those paths need to be
+# sent to their new homes. The extensionless forms (/partners, /impressum) are handled
+# by Cloudflare's auto-trailing-slash asset handling and do not need a rule here.
+/partners.html   /partners/    301
+/impressum.html  /impressum/   301
+/index.html      /             301

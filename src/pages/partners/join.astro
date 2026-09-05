@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site';
+
+const whatYouGet = [
+  ['Deal flow beyond your own network.', 'Inbound from institutional referral channels, cross-referrals from other partners, and brand-driven inbound. Leads you would not have seen on your own.'],
+  ['Clients you would otherwise turn away.', 'A prospect needs European market entry, US commercial build-out, and Asian supply chain expertise. No solo consultant covers all three. In the network you take the engagement, subcontract what you cannot deliver, and keep the client relationship.'],
+  ['An analytical backbone you do not have to build.', 'Market studies, TAM and SAM modeling, competitive intelligence, and pricing benchmarks as a scoped service. You spend your time on client relationships and deal execution.'],
+  ['Operational infrastructure from Day 1.', 'CRM platform, contract templates, sales enablement toolkit, client onboarding standards, methodology frameworks.'],
+  ['A firm behind you, not just your name.', 'Institutional buyers are more comfortable engaging a firm with a codified methodology and a quality standard than a solo consultant with a LinkedIn profile.'],
+  ['No employment trade-off.', 'You keep your own entity, your own client relationships, your own P&L. You are adding infrastructure, deal flow, and a brand to what you already do.'],
+  ['You choose your commercial model.', 'Embedded retainers, market entry sprints, commissioned rep work, team build-out projects, or any mix. We do not prescribe it.'],
+];
+
+const whatWeLookFor = [
+  ['20+ years', 'in semiconductor or deep-tech commercial roles'],
+  ['Direct revenue or P&L ownership,', 'not staff or advisory roles only'],
+  ['An existing customer network', 'you can pick up the phone to'],
+  ['Your own legal entity,', 'or the willingness to establish one'],
+  ['Domain depth', 'in a specific technology, market, or geography'],
+  ['A track record you can evidence,', 'with numbers and references'],
+];
+---
+<BaseLayout
+  title="Join the network — The Engine Factory"
+  description="For senior semiconductor and deep-tech commercial operators with 20+ years of experience, their own entity, and a customer network. What the partner network offers and what we look for."
+>
+  <div class="dark-wrap">
+    <section class="hero hero-compact">
+      <div class="hero-inner">
+        <span class="eyebrow">Join the network</span>
+        <h1>For senior <em>operators</em>.</h1>
+        <hr class="rule">
+        <p class="hero-lede">For senior operators who have already proven they can do this alone.</p>
+      </div>
+    </section>
+  </div>
+
+  <main>
+    <div class="container">
+
+      <section id="who-this-is-for">
+        <span class="eyebrow">Who this is for</span>
+        <h2>You have already proven you can do this <em>alone</em>.</h2>
+        <p>A senior semiconductor commercial leader with 20+ years of experience and a real customer network can operate independently. Many do. The Engine Factory is built for people who have already proven that and want to do it better.</p>
+      </section>
+
+      <section id="what-you-get" class="oxblood-panel">
+        <div class="panel-inner">
+          <span class="eyebrow">What you get</span>
+          <h2>Infrastructure, deal flow, and a <em>brand</em>.</h2>
+          <div class="not-list">
+            {whatYouGet.map(([heading, body]) => (
+              <div class="not-item">
+                <span class="lead">{heading}</span>
+                {body}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="what-we-look-for">
+        <span class="eyebrow">What we look for</span>
+        <h2>A short and <em>unmoving</em> list.</h2>
+        <ul class="criteria-list">
+          {whatWeLookFor.map(([strong, rest]) => (
+            <li><strong>{strong}</strong> {rest}</li>
+          ))}
+        </ul>
+        <p class="phases-note">We are not looking for volume. Every partner represents the brand in front of a customer, and one bad engagement costs more than three good ones earn.</p>
+      </section>
+
+      <section id="how-it-works">
+        <span class="eyebrow">How it works</span>
+        <h2>You keep your <em>entity</em>.</h2>
+        <p>You run your own entity and sign your own client contracts. You operate under The Engine Factory brand, methodology, and quality standard. A royalty on net retained revenue funds the shared infrastructure, the brand, and the referral channels that produce inbound.</p>
+        <p>Terms are set out in a partner agreement we will walk you through before either side commits to anything.</p>
+      </section>
+
+      <section id="next-step">
+        <span class="eyebrow">Next step</span>
+        <h2>A first <em>conversation</em>.</h2>
+        <p>A first conversation, no obligation on either side. If there is a fit we will talk terms. If there is not, we will say so quickly.</p>
+        <p class="contact-cta">
+          <a href={site.booking} class="btn btn-light" target="_blank" rel="noopener">Book a call</a>
+        </p>
+      </section>
+
+    </div>
+  </main>
+</BaseLayout>

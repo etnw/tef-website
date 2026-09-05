@@ -1,0 +1,15 @@
+# Font filenames are stable and their contents never change under the same name,
+# so they can be cached hard.
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Portraits and the share image can be replaced under the same filename, so they get
+# a shorter window.
+/pictures/*
+  Cache-Control: public, max-age=2592000
+/og.png
+  Cache-Control: public, max-age=2592000
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin

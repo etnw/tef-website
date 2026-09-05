@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+---
+<BaseLayout
+  title="Contact — The Engine Factory"
+  description="Talk to The Engine Factory about commercial execution for a semiconductor or deep-tech company, or about joining the partner network. Munich, Germany."
+>
+  <div class="dark-wrap">
+    <section class="hero hero-compact">
+      <div class="hero-inner">
+        <span class="eyebrow">Contact</span>
+        <h1>Let's <em>talk</em>.</h1>
+        <hr class="rule">
+      </div>
+    </section>
+  </div>
+
+  <!-- The heading lives in the hero above, so the shared block renders without its own. -->
+  <ContactBlock heading={false} />
+</BaseLayout>

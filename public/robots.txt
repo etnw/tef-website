@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Impressum and Datenschutz carry a noindex meta tag rather than a Disallow here,
+# so crawlers can fetch the pages and actually see the directive.
+
+Sitemap: https://theenginefactory.com/sitemap-index.xml

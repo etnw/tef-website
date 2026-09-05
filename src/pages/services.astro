@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServicesNav from '../components/ServicesNav.astro';
+import ServiceSection from '../components/ServiceSection.astro';
+import { getCollection } from 'astro:content';
+import { site } from '../data/site';
+
+const services = (await getCollection('services')).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+<BaseLayout
+  title="Services — The Engine Factory"
+  description="Nine areas of commercial work for semiconductor and deep-tech companies: market intelligence, go-to-market, cross-border entry, selling, pipeline, commercial infrastructure, business development, due diligence, and team build-out."
+>
+  <div class="dark-wrap">
+    <section class="hero hero-compact">
+      <div class="hero-inner">
+        <span class="eyebrow">Services</span>
+        <h1>Nine areas of <em>commercial</em> work.</h1>
+        <hr class="rule">
+        <p class="hero-lede">Delivered inside the client's business by a partner working as part of the team.</p>
+      </div>
+    </section>
+  </div>
+
+  <main>
+    <div class="container">
+      <p class="services-intro">Every engagement is scoped and priced individually. There are no fixed packages. Most clients need three or four of these, in sequence.</p>
+
+      <div class="services-layout">
+        <ServicesNav services={services} />
+        <div class="services-body">
+          {services.map((service) => <ServiceSection service={service} />)}
+
+          <section class="service service-close">
+            <p>Engagements are scoped and priced individually, based on stage, market, and objective.</p>
+            <p class="contact-cta">
+              <a href={site.booking} class="btn btn-light" target="_blank" rel="noopener">Book a call</a>
+            </p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<script>
+  // Marks the section currently in view in the sticky nav. Progressive enhancement:
+  // without JS the nav is still a working list of anchor links.
+  const links = document.querySelectorAll<HTMLAnchorElement>('.services-nav a[data-anchor]');
+  const sections = [...links]
+    .map((link) => document.getElementById(link.dataset.anchor!))
+    .filter((el): el is HTMLElement => el !== null);
+
+  if (sections.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          for (const link of links) {
+            link.classList.toggle('is-current', link.dataset.anchor === entry.target.id);
+          }
+        }
+      },
+      // Trips when a section crosses the upper third, so the highlight tracks the
+      // heading the reader is actually on rather than whatever is merely visible.
+      { rootMargin: '-20% 0px -70% 0px' }
+    );
+    sections.forEach((section) => observer.observe(section));
+  }
+</script>

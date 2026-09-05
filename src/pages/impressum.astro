@@ -1,12 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
 ---
 <BaseLayout
   title="Impressum — The Engine Factory"
+  description="Anbieterkennzeichnung gemäß § 5 TMG für ETNW Consulting, München."
   lang="de"
   noindex={true}
-  legalNav={true}
-  footerBackHome={true}
+  legal={true}
 >
   <div class="legal-wrap">
     <main>
@@ -24,8 +25,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </address>
 
         <h2>Kontakt</h2>
-        <p>Telefon: <a href="tel:+498955273295">+49 89 55273295</a></p>
-        <p>E-Mail: <a href="mailto:etnw.mywebsite@pm.me">etnw.mywebsite@pm.me</a></p>
+        <p>Telefon: <a href={`tel:${site.phoneE164}`}>{site.phone}</a></p>
+        <p>E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a></p>
 
         <h2>Umsatzsteuer-ID</h2>
         <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:</p>

@@ -6,25 +6,33 @@ interface Props {
   partner: CollectionEntry<'partners'>;
 }
 const { partner } = Astro.props;
-const { name, role, location, linkedin, photo } = partner.data;
+const { name, role, location, entity, linkedin, photo, domains, coverage } = partner.data;
 const { Content } = await render(partner);
 ---
-<div class={photo ? 'bio bio-with-portrait' : 'bio'}>
-  {photo && (
-    <figure class="bio-portrait">
-      <img src={photo} alt={name} loading="lazy" />
-    </figure>
-  )}
+<article class="bio bio-with-portrait" id={partner.id}>
+  <figure class="bio-portrait">
+    {photo
+      ? <img src={photo} alt={`Portrait of ${name}`} width="1200" height="1200" loading="lazy" decoding="async" />
+      /* Portraits arrive per partner, so the slot holds its shape when one is missing. */
+      : <div class="bio-portrait-empty" aria-hidden="true"></div>}
+  </figure>
   <div class="bio-body">
     <div class="bio-head">
-      <div class="bio-name">{name}</div>
-      <div class="bio-role">{role} — {location}</div>
+      <h2 class="bio-name">{name}</h2>
+      <p class="bio-role">{role} — {location}</p>
+      {entity && <p class="bio-entity">{entity}</p>}
     </div>
     <Content />
-    {linkedin && (
-      <p class="bio-link">
-        <a href={linkedin} target="_blank" rel="noopener">LinkedIn →</a>
-      </p>
-    )}
+    <dl class="bio-meta">
+      <div><dt>Domains</dt><dd>{domains}</dd></div>
+      <div><dt>Coverage</dt><dd>{coverage}</dd></div>
+    </dl>
+    <p class="bio-link">
+      {linkedin
+        ? <a href={linkedin} target="_blank" rel="noopener">LinkedIn →</a>
+        /* URL not supplied yet, so the label renders without a link rather than
+           pointing at a guessed address. */
+        : <span class="bio-link-pending">LinkedIn</span>}
+    </p>
   </div>
-</div>
+</article>

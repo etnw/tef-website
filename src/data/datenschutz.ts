@@ -13,6 +13,8 @@ export interface LegalSection {
   heading: string;
   /** Paragraphs; a nested array renders as a bulleted list. */
   blocks: (string | string[])[];
+  /** Opens a wider break above this section, marking a shift in subject matter. */
+  breakBefore?: boolean;
 }
 
 export const sections: LegalSection[] = [
@@ -120,6 +122,9 @@ export const sections: LegalSection[] = [
     id: 'rechte',
     navLabel: 'Betroffenenrechte',
     heading: '10. Ihre Rechte als betroffene Person',
+    // Sections 1 to 9 describe what is processed; 10 to 12 cover the reader's
+    // rights, retention and changes. The wider break marks that shift.
+    breakBefore: true,
     blocks: [
       'Ihnen stehen gegenüber uns hinsichtlich der Sie betreffenden personenbezogenen Daten die folgenden Rechte zu:',
       [

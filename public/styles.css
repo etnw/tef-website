@@ -1264,3 +1264,10 @@ section[id],
   color: var(--oxblood);
   margin-bottom: 0.45rem;
 }
+
+/* Wider break where the document turns from describing processing to setting out
+   the reader's rights. */
+.legal-section.legal-break {
+  padding-top: 7rem;
+  margin-top: 1.5rem;
+}

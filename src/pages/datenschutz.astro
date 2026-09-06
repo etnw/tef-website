@@ -41,7 +41,7 @@ const isReview = (b: string | string[]) =>
 
         <div class="services-body">
           {sections.map((s) => (
-            <section id={s.id} class="service legal-section">
+            <section id={s.id} class={s.breakBefore ? 'service legal-section legal-break' : 'service legal-section'}>
               <h2>{s.heading}</h2>
               {s.blocks.map((block) =>
                 Array.isArray(block) ? (

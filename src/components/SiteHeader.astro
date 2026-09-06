@@ -11,21 +11,23 @@ const links = [
   { href: '/#approach', label: 'Approach' },
   { href: '/#investors', label: 'Investors' },
   { href: '/partners/', label: 'Partners' },
-  { href: '/contact/', label: 'Contact' },
+  { href: '/#contact', label: 'Contact' },
 ];
 
 const path = Astro.url.pathname;
 ---
 <header class={legal ? 'nav legal-nav' : 'nav'}>
   <div class="nav-inner">
-    <a href="/" class="brand">The Engine Factory</a>
+    <a href="/" class="brand" aria-current={path === '/' ? 'page' : undefined}>The Engine Factory</a>
     <nav aria-label="Primary">
       <ul>
         {links.map(({ href, label }) => {
-          // Anchor links are only "current" on the home page, and only the page part
-          // of a path is compared, so /partners/join/ still marks Partners.
+          // Only links to a distinct page can be the current page. Approach,
+          // Investors and Contact are anchors within the home page, so marking them
+          // current would put aria-current="page" on three items at once. The brand
+          // carries it on the home page instead.
           const target = href.split('#')[0];
-          const current = target !== '/' ? path.startsWith(target) : path === '/';
+          const current = !href.includes('#') && target !== '/' && path.startsWith(target);
           return (
             <li>
               <a href={href} aria-current={current ? 'page' : undefined}>{label}</a>

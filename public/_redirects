@@ -9,3 +9,7 @@
 # /partners/join/ was folded into the foot of the partners page.
 /partners/join    /partners/#join   301
 /partners/join/   /partners/#join   301
+
+# The contact page was folded back into the home page anchor it duplicated.
+/contact     /#contact   301
+/contact/    /#contact   301

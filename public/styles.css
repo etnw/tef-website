@@ -732,13 +732,6 @@ blockquote {
   background-image:
     radial-gradient(ellipse at 80% 20%, rgba(107, 30, 30, 0.12) 0%, transparent 60%);
 }
-/* On the contact page the dark hero sits directly above the dark contact block, so
-   their padding stacks into ~190px of empty ground with no colour change to
-   explain it. Elsewhere #contact follows the cream main, where the boundary is
-   visible and the full padding is right. */
-.dark-wrap + #contact {
-  padding-top: 0;
-}
 .contact-inner {
   max-width: var(--max);
   margin: 0 auto;

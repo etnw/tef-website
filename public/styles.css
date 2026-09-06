@@ -72,6 +72,9 @@
      after a hero gets a little extra breathing room. */
   --section-y: 6.5rem;
   --section-y-first: 7rem;
+  /* Top padding of the first section in a sticky-nav layout. The nav uses the
+     same value so its label sits level with the first heading. */
+  --section-nav-offset: 2.5rem;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -1062,7 +1065,7 @@ section[id],
 @media (min-width: 980px) {
   .services-nav {
     top: calc(var(--header-h) + 2.5rem);
-    padding: 0 0 0 1.25rem;
+    padding: var(--section-nav-offset) 0 0 1.25rem;
     background-color: transparent;
     border-bottom: none;
     border-left: 1px solid var(--rule-cream);
@@ -1093,7 +1096,7 @@ section[id],
 }
 .services-body .service:first-child {
   border-top: none;
-  padding-top: 2.5rem;
+  padding-top: var(--section-nav-offset);
 }
 .service h2 {
   font-size: clamp(2rem, 3.6vw, 2.8rem);

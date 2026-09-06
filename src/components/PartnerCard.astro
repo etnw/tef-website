@@ -4,12 +4,15 @@ import { render } from 'astro:content';
 
 interface Props {
   partner: CollectionEntry<'partners'>;
+  /** Even entries put the portrait left, odd ones right, to give the page rhythm. */
+  index: number;
 }
-const { partner } = Astro.props;
+const { partner, index } = Astro.props;
 const { name, role, location, entity, linkedin, photo, domains, coverage } = partner.data;
 const { Content } = await render(partner);
+const flipped = index % 2 === 1;
 ---
-<article class="bio bio-with-portrait" id={partner.id}>
+<article class={flipped ? 'bio bio-flipped' : 'bio'} id={partner.id}>
   <figure class="bio-portrait">
     {photo
       ? <img src={photo} alt={`Portrait of ${name}`} width="1200" height="1200" loading="lazy" decoding="async" />

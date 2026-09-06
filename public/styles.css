@@ -461,49 +461,99 @@ blockquote {
 }
 
 /* ---------- Bio (partners) ---------- */
+/* Large portraits alternating left and right. Everything stays permanently
+   visible: the LinkedIn link and the bio are never behind a hover state, which
+   would put them out of reach on touch. */
 .bio {
-  margin-top: 3.5rem;
-  padding: 3rem 0;
+  padding: 4.5rem 0;
   border-top: 1px solid var(--rule-cream);
-  border-bottom: 1px solid var(--rule-cream);
-}
-
-.bio-with-portrait {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2.5rem;
   align-items: start;
 }
-@media (min-width: 780px) {
-  .bio-with-portrait {
-    grid-template-columns: 260px 1fr;
-    gap: 3.5rem;
+@media (min-width: 860px) {
+  .bio {
+    grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+    gap: 4.5rem;
+    align-items: center;
   }
+  /* Portrait moves to the right column; the source order stays name-first for
+     screen readers and for the stacked layout below this breakpoint. The track
+     widths swap too, so the portrait keeps the same size on both sides. */
+  .bio-flipped { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); }
+  .bio-flipped .bio-portrait { grid-column: 2; grid-row: 1; }
+  .bio-flipped .bio-body     { grid-column: 1; grid-row: 1; }
 }
+
+/* The section rule and the first bio's own top rule would otherwise stack with a
+   band of empty page between them. */
+.partner-list { padding-top: 0; }
+.partner-list .bio:first-child { border-top: none; }
+
 .bio-portrait {
+  position: relative;
   margin: 0;
+  background-color: var(--cream-deep);
+  border: 1px solid var(--rule-cream);
+  box-shadow: 0 3px 22px rgba(26, 19, 12, 0.10);
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
 }
 .bio-portrait img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  aspect-ratio: 1 / 1;
   object-fit: cover;
-  filter: saturate(0.85) contrast(0.96);
-  border: 1px solid var(--rule-cream);
-  box-shadow: 0 2px 14px rgba(26, 19, 12, 0.08);
+  border: 0;
+  box-shadow: none;
+  filter: grayscale(1) contrast(1.06) brightness(1.02);
+  transform: scale(1.001);
+  transition: filter 0.5s ease, transform 0.5s ease;
 }
-.bio-body > p:first-of-type { margin-top: 1.5rem; }
-.bio-head {
-  margin-bottom: 1.75rem;
+/* Duotone tint, applied over the plain square crop so the treatment can change
+   without re-exporting sources. */
+.bio-portrait::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: var(--oxblood);
+  mix-blend-mode: color;
+  opacity: 0.3;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
 }
+/* The hover is decorative only: the duotone lifts toward full colour and the
+   image scales slightly. No content is revealed or concealed by it. */
+.bio-portrait:hover img {
+  filter: grayscale(0) contrast(1.02) brightness(1.02);
+  transform: scale(1.045);
+}
+.bio-portrait:hover::after { opacity: 0.06; }
+@media (prefers-reduced-motion: reduce) {
+  .bio-portrait img { transition: none; }
+  .bio-portrait:hover img { transform: none; }
+}
+/* Empty slot: holds the square and reads as intentional rather than broken. */
+.bio-portrait-empty {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    135deg,
+    var(--cream-deep) 0%,
+    var(--cream-soft) 50%,
+    var(--cream-deep) 100%
+  );
+}
+
+.bio-head { margin-bottom: 1.5rem; }
 .bio-name {
   font-family: "Cormorant Garamond", serif;
   font-weight: 500;
-  font-size: 1.9rem;
+  font-size: clamp(2.1rem, 3.4vw, 2.9rem);
   color: var(--ink);
   line-height: 1.1;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 .bio-role {
   font-family: "Inter", sans-serif;
@@ -513,18 +563,51 @@ blockquote {
   text-transform: uppercase;
   color: var(--oxblood);
 }
+.bio-entity {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--ink-muted);
+  margin-top: 0.4rem;
+}
 .bio p {
   color: var(--ink-muted);
-  font-size: 0.92rem;
-  line-height: 1.65;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.bio-body > p + p { margin-top: 1rem; }
+
+.bio-meta {
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule-cream);
+  display: grid;
+  gap: 0.5rem;
+}
+.bio-meta > div { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.bio-meta dt {
+  font-family: "Inter", sans-serif;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--oxblood);
+  flex: 0 0 auto;
+  padding-top: 0.2rem;
+}
+.bio-meta dd {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 1.02rem;
+  color: var(--ink-muted);
 }
 .bio-link {
   margin-top: 1.5rem;
   font-family: "Cormorant Garamond", serif;
   font-style: italic;
-  font-size: 1rem;
-  display: inline-block;
+  font-size: 1.05rem;
 }
+.bio-link-pending { color: var(--ink-muted); opacity: 0.55; }
 
 /* ---------- Contact (dark) ---------- */
 #contact {
@@ -981,94 +1064,6 @@ section[id],
   border-top: 1px solid rgba(201, 184, 150, 0.55);
 }
 .service-close p { color: var(--ink-2); }
-
-/* ---------- Partners ---------- */
-/* The section rule and the first bio's own top rule would otherwise stack with a
-   band of empty page between them. */
-.partner-list { padding-top: 0; }
-.partner-list .bio:first-child { margin-top: 0; border-top: none; }
-.bio-name {
-  /* Reset the h1/h2/h3 cascade: these are h2 elements styled as name plates. */
-  font-size: 1.9rem;
-  margin-bottom: 0.4rem;
-}
-.bio-entity {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-style: italic;
-  font-size: 1.02rem;
-  color: var(--ink-muted);
-  margin-top: 0.35rem;
-}
-.bio-meta {
-  margin-top: 1.75rem;
-  display: grid;
-  gap: 0.5rem;
-}
-.bio-meta > div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-.bio-meta dt {
-  font-family: "Inter", sans-serif;
-  font-size: 0.66rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--oxblood);
-  flex: 0 0 auto;
-  padding-top: 0.18rem;
-}
-.bio-meta dd {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-style: italic;
-  font-size: 1rem;
-  color: var(--ink-muted);
-}
-
-/* Duotone portrait treatment. Applied in CSS over a plain square crop, so the look
-   can change without re-cropping or re-exporting the source files. */
-.bio-portrait {
-  position: relative;
-  background-color: var(--cream-deep);
-  border: 1px solid var(--rule-cream);
-  box-shadow: 0 2px 14px rgba(26, 19, 12, 0.08);
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-}
-.bio-portrait img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  border: 0;
-  box-shadow: none;
-  filter: grayscale(1) contrast(1.06) brightness(1.02);
-}
-.bio-portrait::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-color: var(--oxblood);
-  mix-blend-mode: color;
-  opacity: 0.3;
-  pointer-events: none;
-}
-/* Empty slot: holds the square and reads as intentional rather than broken. */
-.bio-portrait-empty {
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(
-    135deg,
-    var(--cream-deep) 0%,
-    var(--cream-soft) 50%,
-    var(--cream-deep) 100%
-  );
-}
-.bio-link-pending {
-  color: var(--ink-muted);
-  opacity: 0.55;
-}
 
 /* ---------- Coverage tables ---------- */
 .coverage-tables {

@@ -49,7 +49,7 @@ const regionCoverage = [
       </section>
 
       <section id="people" class="partner-list">
-        {partners.map((partner) => <PartnerCard partner={partner} />)}
+        {partners.map((partner, i) => <PartnerCard partner={partner} index={i} />)}
       </section>
 
       <section id="coverage">

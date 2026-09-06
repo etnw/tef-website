@@ -1,55 +1,90 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { sections } from '../data/datenschutz';
 
-// Placeholder only. The brief is explicit that privacy policy text must not be
-// generated: it needs qualified legal review before it exists. The route, the page,
-// and the agreed section list are built so the drafted text can drop straight in.
-//
-// Two implementation decisions this text will have to describe, both already made:
-//   - Fonts are self-hosted from this origin. No Google Fonts or other CDN request is
-//     made by the site, so section 8 has nothing external to declare.
-//   - No analytics and no cookies are set by this site, so there is no consent banner.
-const sections = [
-  'Verantwortlicher',
-  'Allgemeine Hinweise zur Datenverarbeitung',
-  'Hosting (Cloudflare, US transfer position, legal basis)',
-  'Server-Logfiles (what is logged, retention, Art. 6(1)(f) GDPR)',
-  'Cookies',
-  'Kontaktaufnahme per E-Mail und Telefon (Art. 6(1)(b) and (f))',
-  'Terminbuchung über Zeeg (third-party processor, data passed, DPA status)',
-  'Externe Schriftarten und Ressourcen',
-  'Webanalyse',
-  'Betroffenenrechte',
-  'Speicherdauer',
-  'Änderungen dieser Datenschutzerklärung',
-];
+// Blocks beginning with REVIEW: are open questions for the reviewer, not policy
+// text. They are rendered as visibly marked notes so they cannot be mistaken for
+// finished copy or published unnoticed.
+const isReview = (b: string | string[]) =>
+  typeof b === 'string' && b.startsWith('REVIEW:');
 ---
 <BaseLayout
   title="Datenschutzerklärung — The Engine Factory"
-  description="Datenschutzerklärung für theenginefactory.com. Diese Seite befindet sich derzeit in Vorbereitung."
+  description="Informationen zur Verarbeitung personenbezogener Daten auf theenginefactory.com nach Art. 13 DSGVO."
   lang="de"
   noindex={true}
-  legal={true}
 >
-  <div class="legal-wrap">
-    <main>
-      <article class="legal">
-        <h1>Datenschutzerklärung</h1>
-        <hr class="legal-intro-rule">
-
-        <p class="placeholder-note">
-          Diese Datenschutzerklärung wird derzeit erstellt und rechtlich geprüft. Bis zur
-          Veröffentlichung erreichen Sie den Verantwortlichen für Fragen zum Datenschutz
-          über die im <a href="/impressum/">Impressum</a> angegebenen Kontaktdaten.
-        </p>
-
-        <h2>Vorgesehene Gliederung</h2>
-        <ol class="placeholder-list">
-          {sections.map((section) => <li>{section}</li>)}
-        </ol>
-
-        <p class="placeholder">Stand: in Vorbereitung.</p>
-      </article>
-    </main>
+  <div class="dark-wrap">
+    <section class="hero hero-compact">
+      <div class="hero-inner">
+        <span class="eyebrow">Datenschutz</span>
+        <h1>Datenschutz&shy;erklärung</h1>
+        <hr class="rule">
+        <p class="hero-lede">Informationen zur Verarbeitung personenbezogener Daten auf dieser Website nach Art. 13 DSGVO.</p>
+      </div>
+    </section>
   </div>
+
+  <main>
+    <div class="container">
+      <p class="services-intro">Diese Website ist eine reine Informationsseite. Sie setzt keine Cookies, bindet keine externen Schriftarten ein und verwendet keine Webanalyse.</p>
+
+      <div class="services-layout">
+        <nav class="services-nav" aria-label="Abschnitte">
+          <span class="services-nav-label">Abschnitte</span>
+          <ul>
+            {sections.map((s) => (
+              <li><a href={`#${s.id}`} data-anchor={s.id}>{s.navLabel}</a></li>
+            ))}
+          </ul>
+        </nav>
+
+        <div class="services-body">
+          {sections.map((s) => (
+            <section id={s.id} class="service legal-section">
+              <h2>{s.heading}</h2>
+              {s.blocks.map((block) =>
+                Array.isArray(block) ? (
+                  <ul class="legal-list">
+                    {block.map((li) => <li>{li}</li>)}
+                  </ul>
+                ) : isReview(block) ? (
+                  <p class="review-note" set:html={block.replace(/^REVIEW:\s*/, '')} />
+                ) : (
+                  <p set:html={block} />
+                )
+              )}
+            </section>
+          ))}
+
+          <section class="service service-close">
+            <p class="legal-stand">Stand: 6. September 2026.</p>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
 </BaseLayout>
+
+<script>
+  // Same section-tracking behaviour as the services page.
+  const links = document.querySelectorAll<HTMLAnchorElement>('.services-nav a[data-anchor]');
+  const sections = [...links]
+    .map((link) => document.getElementById(link.dataset.anchor!))
+    .filter((el): el is HTMLElement => el !== null);
+
+  if (sections.length && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          for (const link of links) {
+            link.classList.toggle('is-current', link.dataset.anchor === entry.target.id);
+          }
+        }
+      },
+      { rootMargin: '-20% 0px -70% 0px' }
+    );
+    sections.forEach((section) => observer.observe(section));
+  }
+</script>

@@ -1217,3 +1217,50 @@ section[id],
 @media (max-width: 700px) {
   :root { --header-h: 104px; }
 }
+
+/* ---------- Legal page built on the services section template ---------- */
+.legal-section h2 {
+  font-size: clamp(1.5rem, 2.4vw, 1.95rem);
+  margin-bottom: 1.1rem;
+}
+.legal-section p {
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  max-width: var(--measure);
+}
+.legal-section p + p { margin-top: 1rem; }
+.legal-list {
+  margin: 1rem 0 0 1.2rem;
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+  line-height: 1.75;
+  max-width: var(--measure);
+}
+.legal-list li { margin-bottom: 0.35rem; }
+.legal-stand {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  color: var(--ink-muted);
+}
+/* Open questions for the reviewer. Deliberately conspicuous so they cannot be
+   published by accident; delete the block once the answer is filled in. */
+.review-note {
+  margin-top: 1rem;
+  padding: 0.9rem 1.1rem;
+  border-left: 3px solid var(--oxblood);
+  background-color: rgba(107, 30, 30, 0.055);
+  font-size: 0.88rem !important;
+  color: var(--ink-2) !important;
+}
+.review-note::before {
+  content: 'Zu prüfen vor Veröffentlichung';
+  display: block;
+  font-family: "Inter", sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--oxblood);
+  margin-bottom: 0.45rem;
+}

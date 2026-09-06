@@ -14,8 +14,12 @@ const id = section.id;
   {panel ? (
     <div class="panel-inner">
       <SectionInner section={section} />
+      <slot />
     </div>
   ) : (
-    <SectionInner section={section} />
+    <>
+      <SectionInner section={section} />
+      <slot />
+    </>
   )}
 </section>

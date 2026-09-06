@@ -39,8 +39,9 @@ const investors = (await getEntry('sections', 'investors'))!;
 
       <ContentSection section={who} />
 
-      <ContentSection section={offering} />
-      <p class="section-more"><a href="/services/">All services in detail →</a></p>
+      <ContentSection section={offering}>
+        <p class="section-more"><a href="/services/">All services in detail →</a></p>
+      </ContentSection>
 
       <section id="partners">
         <span class="eyebrow">Partners</span>

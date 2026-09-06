@@ -68,6 +68,10 @@
   --rule-dark: #332821;
   --max: 1120px;
   --measure: 62ch;
+  /* One vertical rhythm for every full-width band on every page. The first band
+     after a hero gets a little extra breathing room. */
+  --section-y: 6.5rem;
+  --section-y-first: 7rem;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -300,12 +304,12 @@ main {
   padding: 0 1.75rem;
 }
 section {
-  padding: 6.5rem 0;
+  padding: var(--section-y) 0;
 }
 section + section {
   border-top: 1px solid rgba(201, 184, 150, 0.55);
 }
-section:first-of-type { padding-top: 7rem; }
+section:first-of-type { padding-top: var(--section-y-first); }
 
 /* ---------- Items grid (services, why) ---------- */
 .items {
@@ -353,7 +357,7 @@ blockquote {
   color: var(--cream);
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  padding: 7rem 0;
+  padding: var(--section-y) 0;
   border-top: 0 !important;
   background-image:
     radial-gradient(ellipse at 15% 20%, rgba(255, 235, 200, 0.06) 0%, transparent 55%),
@@ -721,7 +725,7 @@ blockquote {
 #contact {
   background-color: var(--dark);
   color: var(--cream);
-  padding: 6rem 1.75rem 6.5rem;
+  padding: var(--section-y) 1.75rem;
   background-image:
     radial-gradient(ellipse at 80% 20%, rgba(107, 30, 30, 0.12) 0%, transparent 60%);
 }
@@ -878,8 +882,8 @@ footer {
 @media (max-width: 700px) {
   body { font-size: 16.5px; }
   .hero { padding: 4rem 1.5rem 5.5rem; min-height: 72vh; }
-  section { padding: 4.5rem 0; }
-  #contact { padding: 4.5rem 1.5rem 5rem; }
+  :root { --section-y: 4.5rem; --section-y-first: 5rem; }
+  #contact { padding: var(--section-y) 1.5rem; }
   .nav { padding: 0.9rem 1.25rem 0.9rem; }
   .nav-inner {
     flex-direction: column;
@@ -987,7 +991,7 @@ section[id],
 
 /* ---------- Services page ---------- */
 .services-intro {
-  padding-top: 4.5rem;
+  padding-top: var(--section-y-first);
   font-size: 1.05rem;
   color: var(--ink-2);
   max-width: var(--measure);
@@ -996,7 +1000,7 @@ section[id],
   display: grid;
   grid-template-columns: 1fr;
   gap: 2.5rem;
-  padding-bottom: 5rem;
+  padding-bottom: var(--section-y);
 }
 /* Grid items default to min-width:auto, which lets the nav's scrolling row grow to
    its content width and widen the page. Both columns have to be allowed to shrink. */
@@ -1212,5 +1216,4 @@ section[id],
 /* ---------- Mobile ---------- */
 @media (max-width: 700px) {
   :root { --header-h: 104px; }
-  .services-intro { padding-top: 3rem; }
 }

@@ -5,6 +5,8 @@
 //
 // PENDING QUALIFIED LEGAL REVIEW before this page is indexed or linked as final.
 
+import { site } from './site';
+
 export interface LegalSection {
   id: string;
   navLabel: string;
@@ -20,8 +22,8 @@ export const sections: LegalSection[] = [
     heading: '1. Verantwortlicher',
     blocks: [
       'Verantwortlich für die Datenverarbeitung auf dieser Website im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:',
-      'Etienne Winkelmuller<br>ETNW Consulting (Einzelunternehmen)<br>Sendlinger Strasse 29<br>80331 München<br>Deutschland',
-      'Telefon: +49 89 55273295<br>E-Mail: etienne.winkelmuller@theenginefactory.com',
+      `${site.founder}<br>${site.legalName} (Einzelunternehmen)<br>${site.address.street}<br>${site.address.postalCode} ${site.address.cityDe}<br>${site.address.countryDe}`,
+      `Telefon: ${site.phone}<br>E-Mail: ${site.email}`,
       'Ein Datenschutzbeauftragter ist nicht bestellt, da die Voraussetzungen des Art. 37 DSGVO in Verbindung mit § 38 BDSG nicht vorliegen.',
     ],
   },

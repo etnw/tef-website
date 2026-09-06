@@ -8,7 +8,7 @@ export const site = {
     'The commercial engine for deep-tech companies. Pipeline, pricing, customer contracts, and the team to run it, for semiconductor and deep-tech businesses.',
   legalName: 'ETNW Consulting',
   founder: 'Etienne Winkelmuller',
-  email: 'etienne.winkelmuller@theenginefactory.com',
+  email: 'contact@theenginefactory.com',
   phone: '+49 89 55273295',
   // Digits only, for tel: hrefs and schema.org.
   phoneE164: '+498955273295',
@@ -24,6 +24,7 @@ export const site = {
     city: 'Munich',
     cityDe: 'München',
     country: 'Germany',
+    countryDe: 'Deutschland',
     countryCode: 'DE',
   },
   ogImage: '/og.png',

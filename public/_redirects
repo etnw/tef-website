@@ -5,3 +5,7 @@
 /partners.html   /partners/    301
 /impressum.html  /impressum/   301
 /index.html      /             301
+
+# /partners/join/ was folded into the foot of the partners page.
+/partners/join    /partners/#who-this-is-for   301
+/partners/join/   /partners/#who-this-is-for   301

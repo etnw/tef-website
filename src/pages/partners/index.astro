@@ -22,6 +22,16 @@ const domainCoverage = [
   ['Optical inspection and yield', 'Michael Matauschek'],
 ];
 
+const whatYouGet = [
+  ['Deal flow beyond your own network.', 'Inbound from institutional referral channels, cross-referrals from other partners, and brand-driven inbound. Leads you would not have seen on your own.'],
+  ['Clients you would otherwise turn away.', 'A prospect needs European market entry, US commercial build-out, and Asian supply chain expertise. No solo consultant covers all three. In the network you take the engagement, subcontract what you cannot deliver, and keep the client relationship.'],
+  ['An analytical backbone you do not have to build.', 'Market studies, TAM and SAM modeling, competitive intelligence, and pricing benchmarks as a scoped service. You spend your time on client relationships and deal execution.'],
+  ['Operational infrastructure from Day 1.', 'CRM platform, contract templates, sales enablement toolkit, client onboarding standards, methodology frameworks.'],
+  ['A firm behind you, not just your name.', 'Institutional buyers are more comfortable engaging a firm with a codified methodology and a quality standard than a solo consultant with a LinkedIn profile.'],
+  ['No employment trade-off.', 'You keep your own entity, your own client relationships, your own P&L. You are adding infrastructure, deal flow, and a brand to what you already do.'],
+  ['You choose your commercial model.', 'Embedded retainers, market entry sprints, commissioned rep work, team build-out projects, or any mix. We do not prescribe it.'],
+];
+
 const regionCoverage = [
   ['Europe', 'Etienne Winkelmuller, Michael Matauschek'],
   ['North America', 'Rich Kapusta'],
@@ -29,7 +39,7 @@ const regionCoverage = [
 ---
 <BaseLayout
   title="Partners — The Engine Factory"
-  description="A network of independent senior semiconductor commercial operators. Etienne Winkelmuller in Munich, Rich Kapusta in San Jose, and Michael Matauschek in Munich, covering Europe and North America."
+  description="A network of independent senior semiconductor commercial operators covering Europe and North America, and what the network offers senior operators who join it."
 >
   <div class="dark-wrap">
     <section class="hero hero-compact">
@@ -93,13 +103,28 @@ const regionCoverage = [
         </div>
       </section>
 
-      <section id="join">
-        <span class="eyebrow">Join the network</span>
-        <h2>We are <em>selective</em> about who carries this brand into a customer meeting.</h2>
-        <p class="section-more"><a href="/partners/join/">See what we look for →</a></p>
+      <section id="who-this-is-for">
+        <span class="eyebrow">Who this is for</span>
+        <h2>You have already proven you can do this <em>alone</em>.</h2>
+        <p>A senior semiconductor commercial leader with 20+ years of experience and a real customer network can operate independently. Many do. The Engine Factory is built for people who have already proven that and want to do it better.</p>
       </section>
 
     </div>
+
+    <section id="what-you-get" class="oxblood-panel">
+      <div class="panel-inner">
+        <span class="eyebrow">What you get</span>
+        <h2>Infrastructure, deal flow, and a <em>brand</em>.</h2>
+        <div class="serve-list">
+          {whatYouGet.map(([heading, body]) => (
+            <div class="serve-item">
+              <h3>{heading}</h3>
+              <p>{body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   </main>
 </BaseLayout>
 

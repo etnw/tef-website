@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PartnerCard from '../../components/PartnerCard.astro';
 import PartnerBio from '../../components/PartnerBio.astro';
 import { getCollection } from 'astro:content';
+import { site } from '../../data/site';
 
 const partners = (await getCollection('partners')).sort(
   (a, b) => a.data.order - b.data.order
@@ -101,6 +102,14 @@ const regionCoverage = [
             </table>
           </div>
         </div>
+      </section>
+
+      <section id="join">
+        <h2>Join the <em>network</em>.</h2>
+        <p>A first conversation, no obligation on either side. If there is a fit we will talk terms. If there is not, we will say so quickly.</p>
+        <p class="contact-cta">
+          <a href={site.booking} class="btn" target="_blank" rel="noopener">Book a call</a>
+        </p>
       </section>
 
       <section id="who-this-is-for">

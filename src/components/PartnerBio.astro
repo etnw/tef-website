@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+
+interface Props {
+  partner: CollectionEntry<'partners'>;
+}
+const { partner } = Astro.props;
+const { name, role, location, domains, coverage } = partner.data;
+const { Content } = await render(partner);
+---
+{/* Rendered open. The toggle script collapses these on load, so with JavaScript
+    unavailable every bio is simply readable on the page. */}
+<article class="partner-bio" id={`bio-${partner.id}`}>
+  <div class="partner-bio-inner">
+    <h3>{name}</h3>
+    <p class="tile-role">{role} — {location}</p>
+    <div class="partner-bio-body">
+      <Content />
+    </div>
+    <dl class="bio-meta">
+      <div><dt>Domains</dt><dd>{domains}</dd></div>
+      <div><dt>Coverage</dt><dd>{coverage}</dd></div>
+    </dl>
+  </div>
+</article>

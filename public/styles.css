@@ -460,60 +460,52 @@ blockquote {
   line-height: 1.2;
 }
 
-/* ---------- Bio (partners) ---------- */
-/* Large portraits alternating left and right. Everything stays permanently
-   visible: the LinkedIn link and the bio are never behind a hover state, which
-   would put them out of reach on touch. */
-.bio {
-  padding: 4.5rem 0;
-  border-top: 1px solid var(--rule-cream);
+/* ---------- Partner mosaic ---------- */
+/* A row of square portraits. Hovering or focusing a portrait fades the bio in
+   over it. The name, role and LinkedIn link sit in a caption *below* the
+   portrait, so nothing clickable is ever hidden behind a hover state. */
+.partner-mosaic {
+  padding-top: 0;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
-  align-items: start;
+  gap: 3rem 2rem;
 }
-@media (min-width: 860px) {
-  .bio {
-    grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
-    gap: 4.5rem;
-    align-items: center;
-  }
-  /* Portrait moves to the right column; the source order stays name-first for
-     screen readers and for the stacked layout below this breakpoint. The track
-     widths swap too, so the portrait keeps the same size on both sides. */
-  .bio-flipped { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); }
-  .bio-flipped .bio-portrait { grid-column: 2; grid-row: 1; }
-  .bio-flipped .bio-body     { grid-column: 1; grid-row: 1; }
+@media (min-width: 620px) {
+  .partner-mosaic { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 940px) {
+  .partner-mosaic { grid-template-columns: repeat(3, 1fr); }
 }
 
-/* The section rule and the first bio's own top rule would otherwise stack with a
-   band of empty page between them. */
-.partner-list { padding-top: 0; }
-.partner-list .bio:first-child { border-top: none; }
+.tile { margin: 0; }
 
-.bio-portrait {
+.tile-portrait {
   position: relative;
   margin: 0;
+  /* Taller than square: the portraits carry it well and it buys the bio panel
+     roughly six more lines. */
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
   background-color: var(--cream-deep);
   border: 1px solid var(--rule-cream);
   box-shadow: 0 3px 22px rgba(26, 19, 12, 0.10);
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
+  cursor: pointer;
 }
-.bio-portrait img {
+.tile-portrait:focus-visible {
+  outline: 2px solid var(--oxblood);
+  outline-offset: 3px;
+}
+.tile-portrait img {
   width: 100%;
   height: 100%;
   display: block;
   object-fit: cover;
-  border: 0;
-  box-shadow: none;
   filter: grayscale(1) contrast(1.06) brightness(1.02);
   transform: scale(1.001);
-  transition: filter 0.5s ease, transform 0.5s ease;
+  transition: filter 0.5s ease, transform 0.6s ease;
 }
-/* Duotone tint, applied over the plain square crop so the treatment can change
-   without re-exporting sources. */
-.bio-portrait::after {
+/* Duotone tint over the plain square crop, so the treatment is CSS-only. */
+.tile-portrait::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -523,19 +515,68 @@ blockquote {
   pointer-events: none;
   transition: opacity 0.5s ease;
 }
-/* The hover is decorative only: the duotone lifts toward full colour and the
-   image scales slightly. No content is revealed or concealed by it. */
-.bio-portrait:hover img {
-  filter: grayscale(0) contrast(1.02) brightness(1.02);
-  transform: scale(1.045);
+.tile-portrait:hover img,
+.tile-portrait:focus-within img,
+.tile-portrait:focus img {
+  transform: scale(1.06);
 }
-.bio-portrait:hover::after { opacity: 0.06; }
-@media (prefers-reduced-motion: reduce) {
-  .bio-portrait img { transition: none; }
-  .bio-portrait:hover img { transform: none; }
+
+/* The bio panel. Always in the DOM for assistive tech and crawlers; only its
+   opacity changes, so no content is conditionally rendered. */
+.tile-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  /* Top-aligned so a long bio starts at its first line rather than being
+     clipped at both ends. */
+  align-items: flex-start;
+  background-color: rgba(74, 20, 20, 0.94);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  overflow-y: auto;
+  overscroll-behavior: contain;
 }
-/* Empty slot: holds the square and reads as intentional rather than broken. */
-.bio-portrait-empty {
+.tile-portrait:hover .tile-overlay,
+.tile-portrait:focus-within .tile-overlay,
+.tile-portrait:focus .tile-overlay {
+  opacity: 1;
+}
+.tile-overlay-inner { padding: 1.6rem 1.5rem; }
+.tile-overlay p {
+  color: var(--cream-soft);
+  font-size: 0.78rem;
+  line-height: 1.55;
+  max-width: none;
+}
+.tile-overlay p + p { margin-top: 0.6rem; }
+
+.tile-meta {
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(239, 228, 205, 0.28);
+  display: grid;
+  gap: 0.35rem;
+}
+.tile-meta > div { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tile-meta dt {
+  font-family: "Inter", sans-serif;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dark-muted-2);
+  flex: 0 0 auto;
+  padding-top: 0.15rem;
+}
+.tile-meta dd {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: 0.86rem;
+  color: var(--cream-soft);
+}
+
+.tile-empty {
   width: 100%;
   height: 100%;
   background-image: linear-gradient(
@@ -546,46 +587,96 @@ blockquote {
   );
 }
 
-.bio-head { margin-bottom: 1.5rem; }
-.bio-name {
+/* Caption below the portrait: permanently visible and clickable. */
+.tile-caption { padding-top: 1.25rem; }
+.tile-name {
   font-family: "Cormorant Garamond", serif;
   font-weight: 500;
-  font-size: clamp(2.1rem, 3.4vw, 2.9rem);
+  font-size: 1.6rem;
   color: var(--ink);
-  line-height: 1.1;
-  margin-bottom: 0.5rem;
+  line-height: 1.15;
+  margin-bottom: 0.4rem;
 }
-.bio-role {
+.tile-role {
   font-family: "Inter", sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.66rem;
   font-weight: 500;
-  letter-spacing: 0.26em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--oxblood);
 }
-.bio-entity {
+.tile-entity {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-style: italic;
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   color: var(--ink-muted);
-  margin-top: 0.4rem;
+  margin-top: 0.35rem;
 }
-.bio p {
-  color: var(--ink-muted);
-  font-size: 0.95rem;
-  line-height: 1.7;
+/* Toggle and LinkedIn sit side by side under the portrait. */
+.tile-actions {
+  margin-top: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1.25rem;
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1rem;
 }
-.bio-body > p + p { margin-top: 1rem; }
+.tile-more {
+  font: inherit;
+  color: var(--oxblood);
+  background: none;
+  border: 0;
+  border-bottom: 1px solid rgba(107, 30, 30, 0.3);
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.tile-more:hover {
+  color: var(--oxblood-bright);
+  border-bottom-color: var(--oxblood-bright);
+}
+.tile-more:focus-visible {
+  outline: 2px solid var(--oxblood);
+  outline-offset: 3px;
+}
+.tile-more[aria-expanded="true"] {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
 
-.bio-meta {
+/* Expanded biography, full width beneath the mosaic row. */
+.partner-bios { margin-top: 0; }
+.partner-bio {
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--rule-cream);
+}
+.partner-bio h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(1.9rem, 3vw, 2.4rem);
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+.partner-bio-body { margin-top: 1.5rem; }
+.partner-bio-body p {
+  color: var(--ink-muted);
+  font-size: 0.98rem;
+  line-height: 1.75;
+}
+.partner-bio-body p + p { margin-top: 1.1rem; }
+.partner-bio .bio-meta {
   margin-top: 1.75rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--rule-cream);
   display: grid;
   gap: 0.5rem;
 }
-.bio-meta > div { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-.bio-meta dt {
+.partner-bio .bio-meta > div { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.partner-bio .bio-meta dt {
   font-family: "Inter", sans-serif;
   font-size: 0.66rem;
   font-weight: 600;
@@ -595,19 +686,45 @@ blockquote {
   flex: 0 0 auto;
   padding-top: 0.2rem;
 }
-.bio-meta dd {
+.partner-bio .bio-meta dd {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-style: italic;
   font-size: 1.02rem;
   color: var(--ink-muted);
 }
-.bio-link {
-  margin-top: 1.5rem;
-  font-family: "Cormorant Garamond", serif;
-  font-style: italic;
-  font-size: 1.05rem;
-}
 .bio-link-pending { color: var(--ink-muted); opacity: 0.55; }
+
+/* Touch devices have no hover, so the bio is shown permanently beneath the
+   portrait instead of as an overlay that could never be triggered. */
+@media (hover: none) {
+  .tile-portrait { cursor: default; }
+  .tile-overlay {
+    position: static;
+    opacity: 1;
+    background-color: transparent;
+    overflow-y: visible;
+  }
+  .tile-portrait {
+    aspect-ratio: auto;
+    border: 0;
+    box-shadow: none;
+    background: none;
+  }
+  .tile-portrait img {
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--rule-cream);
+  }
+  .tile-overlay-inner { padding: 1.25rem 0 0; }
+  .tile-overlay p { color: var(--ink-muted); font-size: 0.9rem; }
+  .tile-meta { border-top-color: var(--rule-cream); }
+  .tile-meta dt { color: var(--oxblood); }
+  .tile-meta dd { color: var(--ink-muted); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile-portrait img { transition: none; }
+  .tile-portrait:hover img { transform: none; }
+}
 
 /* ---------- Contact (dark) ---------- */
 #contact {

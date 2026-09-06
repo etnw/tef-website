@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PartnerCard from '../../components/PartnerCard.astro';
+import PartnerBio from '../../components/PartnerBio.astro';
 import { getCollection } from 'astro:content';
 
 const partners = (await getCollection('partners')).sort(
@@ -48,8 +49,15 @@ const regionCoverage = [
         <p class="lede-para">The Engine Factory is a network of independent senior commercial operators. Each partner runs their own entity, brings their own domain expertise and customer network, and works to a shared methodology and quality standard. When an engagement needs capability beyond one partner, another partner delivers it.</p>
       </section>
 
-      <section id="people" class="partner-list">
-        {partners.map((partner, i) => <PartnerCard partner={partner} index={i} />)}
+      <section id="people">
+        <div class="partner-mosaic">
+          {partners.map((partner) => <PartnerCard partner={partner} />)}
+        </div>
+        {/* Full bios live after the whole row, so an open one is full width
+            rather than squeezed into a single column. */}
+        <div class="partner-bios">
+          {partners.map((partner) => <PartnerBio partner={partner} />)}
+        </div>
       </section>
 
       <section id="coverage">
@@ -94,3 +102,30 @@ const regionCoverage = [
     </div>
   </main>
 </BaseLayout>
+
+<script>
+  // Progressive enhancement: the bios are rendered open, and are collapsed here
+  // only once the toggle exists to reopen them.
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.tile-more');
+  const panels = document.querySelectorAll<HTMLElement>('.partner-bio');
+
+  panels.forEach((panel) => { panel.hidden = true; });
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const target = document.getElementById(button.dataset.bio!);
+      if (!target) return;
+      const wasOpen = !target.hidden;
+
+      // Only one bio is open at a time, so the row never pushes far down the page.
+      panels.forEach((panel) => { panel.hidden = true; });
+      buttons.forEach((other) => other.setAttribute('aria-expanded', 'false'));
+
+      if (!wasOpen) {
+        target.hidden = false;
+        button.setAttribute('aria-expanded', 'true');
+        target.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      }
+    });
+  });
+</script>

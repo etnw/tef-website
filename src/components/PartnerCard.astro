@@ -1,41 +1,47 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { render } from 'astro:content';
 
 interface Props {
   partner: CollectionEntry<'partners'>;
-  /** Even entries put the portrait left, odd ones right, to give the page rhythm. */
-  index: number;
 }
-const { partner, index } = Astro.props;
+const { partner } = Astro.props;
 const { name, role, location, entity, linkedin, photo, domains, coverage } = partner.data;
-const { Content } = await render(partner);
-const flipped = index % 2 === 1;
+
+// The opening paragraph of every bio is written as a self-contained summary, so it
+// is taken from the body rather than duplicated into frontmatter, which would let
+// the two drift apart.
+const summary = (partner.body ?? '').trim().split(/\n\s*\n/)[0].trim();
+const bioId = `bio-${partner.id}`;
 ---
-<article class={flipped ? 'bio bio-flipped' : 'bio'} id={partner.id}>
-  <figure class="bio-portrait">
+<article class="tile">
+  <figure class="tile-portrait" tabindex="0" aria-label={`About ${name}`}>
     {photo
       ? <img src={photo} alt={`Portrait of ${name}`} width="1200" height="1200" loading="lazy" decoding="async" />
-      /* Portraits arrive per partner, so the slot holds its shape when one is missing. */
-      : <div class="bio-portrait-empty" aria-hidden="true"></div>}
-  </figure>
-  <div class="bio-body">
-    <div class="bio-head">
-      <h2 class="bio-name">{name}</h2>
-      <p class="bio-role">{role} — {location}</p>
-      {entity && <p class="bio-entity">{entity}</p>}
+      : <div class="tile-empty" aria-hidden="true"></div>}
+    <div class="tile-overlay">
+      <div class="tile-overlay-inner">
+        <p>{summary}</p>
+        <dl class="tile-meta">
+          <div><dt>Domains</dt><dd>{domains}</dd></div>
+          <div><dt>Coverage</dt><dd>{coverage}</dd></div>
+        </dl>
+      </div>
     </div>
-    <Content />
-    <dl class="bio-meta">
-      <div><dt>Domains</dt><dd>{domains}</dd></div>
-      <div><dt>Coverage</dt><dd>{coverage}</dd></div>
-    </dl>
-    <p class="bio-link">
+  </figure>
+
+  {/* Everything below the portrait stays permanently visible and clickable, so
+      neither the LinkedIn link nor the bio toggle is trapped behind a hover. */}
+  <figcaption class="tile-caption">
+    <h2 class="tile-name">{name}</h2>
+    <p class="tile-role">{role} — {location}</p>
+    {entity && <p class="tile-entity">{entity}</p>}
+    <p class="tile-actions">
+      <button type="button" class="tile-more" aria-expanded="false" aria-controls={bioId} data-bio={bioId}>
+        Full biography
+      </button>
       {linkedin
         ? <a href={linkedin} target="_blank" rel="noopener">LinkedIn →</a>
-        /* URL not supplied yet, so the label renders without a link rather than
-           pointing at a guessed address. */
         : <span class="bio-link-pending">LinkedIn</span>}
     </p>
-  </div>
+  </figcaption>
 </article>

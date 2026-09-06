@@ -912,12 +912,26 @@ footer {
 :root {
   --header-h: 76px;
 }
+/* scroll-margin applies to the border box, so the break section's own margin-top
+   is already accounted for; only its padding needs pulling back. */
+/* Where an anchored section's first line should come to rest: just clear of the
+   sticky header. */
 html {
   scroll-padding-top: calc(var(--header-h) + 1.5rem);
 }
-section[id],
-.service[id] {
-  scroll-margin-top: calc(var(--header-h) + 1.5rem);
+/* Each section is then pulled back by its own top padding, so the heading lands
+   at that position rather than the top of the padding box. Without this the
+   padding sits under the header and the heading appears a third of the way down
+   the window. scroll-padding and scroll-margin add together, so only the pull-back
+   belongs here. */
+section[id] {
+  scroll-margin-top: calc(-1 * var(--section-y));
+}
+.services-body .service[id] {
+  scroll-margin-top: -3.5rem;
+}
+.services-body .service.legal-break[id] {
+  scroll-margin-top: -7rem;
 }
 
 /* ---------- Buttons (previously only styled inside #contact) ---------- */

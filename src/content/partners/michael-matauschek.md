@@ -2,6 +2,7 @@
 name: "Michael Matauschek"
 role: "Partner"
 location: "Munich, Germany"
+linkedin: "https://www.linkedin.com/in/michaelmatauschek/"
 photo: "/pictures/MichaelMatauschek.jpg"
 domains: "test and ATE, optical inspection, yield and supply chain"
 coverage: "Europe"

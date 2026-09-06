@@ -10,19 +10,17 @@ const metrics = [
   { value: '$30M+', label: 'design-in pipeline across 1,000+ target accounts' },
 ];
 ---
-<section class="metric-band" aria-label="Track record">
-  <div class="metric-inner">
-    <dl class="metric-grid">
-      {metrics.map(({ value, label }) => (
-        <div class="metric">
-          <dt class="metric-value">{value}</dt>
-          <dd class="metric-label">{label}</dd>
-        </div>
-      ))}
-    </dl>
-    <p class="metric-note">
-      Each figure is a result delivered by one partner, not a network total.
-      Individual records on the <a href="/partners/">partners page</a>.
-    </p>
-  </div>
+<section id="metrics" aria-label="Track record">
+  <dl class="metric-grid">
+    {metrics.map(({ value, label }) => (
+      <div class="metric">
+        <dt class="metric-value">{value}</dt>
+        <dd class="metric-label">{label}</dd>
+      </div>
+    ))}
+  </dl>
+  <p class="metric-note">
+    Each figure is a result delivered by one partner, not a network total.
+    Individual records on the <a href="/partners/">partners page</a>.
+  </p>
 </section>

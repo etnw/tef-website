@@ -987,22 +987,11 @@ section[id],
 }
 
 /* ---------- Metric band ---------- */
-.metric-band {
-  background-color: var(--dark-2);
-  color: var(--cream);
-  padding: 4.5rem 1.75rem;
-  border-top: 1px solid var(--rule-dark);
-  background-image:
-    radial-gradient(ellipse at 50% 0%, rgba(107, 30, 30, 0.16) 0%, transparent 60%);
-}
-.metric-inner {
-  max-width: var(--max);
-  margin: 0 auto;
-}
+/* Same palette as the "What we do" items: oxblood figure, muted body, on cream. */
 .metric-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.25rem 2.5rem;
+  gap: 2.5rem 3rem;
 }
 @media (min-width: 640px) {
   .metric-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1012,32 +1001,27 @@ section[id],
 }
 .metric-value {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(2.1rem, 3.4vw, 2.9rem);
+  font-size: clamp(2.1rem, 3.4vw, 2.8rem);
   font-weight: 500;
   line-height: 1.05;
-  color: var(--oxblood-bright);
-  margin-bottom: 0.45rem;
+  color: var(--oxblood);
+  margin-bottom: 0.5rem;
 }
 .metric-label {
-  font-size: 0.92rem;
-  line-height: 1.55;
-  color: var(--dark-muted-2);
-  max-width: 30ch;
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 32ch;
 }
 .metric-note {
   margin-top: 3rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--rule-dark);
-  font-size: 0.78rem;
+  border-top: 1px solid rgba(201, 184, 150, 0.55);
+  font-size: 0.8rem;
   line-height: 1.6;
-  color: var(--dark-muted);
+  color: var(--ink-muted);
   max-width: 68ch;
 }
-.metric-note a {
-  color: var(--dark-muted-2);
-  border-bottom-color: rgba(138, 117, 86, 0.5);
-}
-.metric-note a:hover { color: var(--cream); border-bottom-color: var(--cream); }
 
 /* ---------- Services page ---------- */
 .services-intro {
@@ -1269,6 +1253,5 @@ section[id],
 /* ---------- Mobile ---------- */
 @media (max-width: 700px) {
   :root { --header-h: 104px; }
-  .metric-band { padding: 3.5rem 1.5rem; }
   .services-intro { padding-top: 3rem; }
 }

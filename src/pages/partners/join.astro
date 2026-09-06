@@ -49,11 +49,13 @@ const whatWeLookFor = [
         <div class="panel-inner">
           <span class="eyebrow">What you get</span>
           <h2>Infrastructure, deal flow, and a <em>brand</em>.</h2>
-          <div class="not-list">
+          {/* Same structure as "Who we serve" on the home page, so the panel
+              inherits the same heading and body colours. */}
+          <div class="serve-list">
             {whatYouGet.map(([heading, body]) => (
-              <div class="not-item">
-                <span class="lead">{heading}</span>
-                {body}
+              <div class="serve-item">
+                <h3>{heading}</h3>
+                <p>{body}</p>
               </div>
             ))}
           </div>

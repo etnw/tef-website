@@ -449,16 +449,6 @@ blockquote {
 .not-item {
   color: var(--ink-muted);
 }
-.not-item .lead {
-  font-family: "Cormorant Garamond", serif;
-  font-style: italic;
-  font-weight: 600;
-  font-size: 1.7rem;
-  color: var(--oxblood);
-  display: block;
-  margin-bottom: 0.4rem;
-  line-height: 1.2;
-}
 
 /* ---------- Partner mosaic ---------- */
 /* A row of square portraits. Hovering or focusing a portrait fades the bio in
@@ -1196,9 +1186,6 @@ section[id],
 }
 .criteria-list strong { color: var(--ink); }
 
-/* The join page reuses .not-list on an oxblood panel, where the item body is a bare
-   text node rather than a paragraph. */
-.oxblood-panel .not-item .lead { color: var(--cream-soft); }
 
 /* ---------- Footer ---------- */
 .footer-links {

@@ -1065,7 +1065,10 @@ section[id],
 @media (min-width: 980px) {
   .services-nav {
     top: calc(var(--header-h) + 2.5rem);
-    padding: var(--section-nav-offset) 0 0 1.25rem;
+    /* Margin rather than padding, so the border-left hairline starts level with
+       the label instead of rising above it. */
+    margin-top: var(--section-nav-offset);
+    padding: 0 0 0 1.25rem;
     background-color: transparent;
     border-bottom: none;
     border-left: 1px solid var(--rule-cream);

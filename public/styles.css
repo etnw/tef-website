@@ -256,8 +256,11 @@ h2 em {
 
 /* ---------- Hero ---------- */
 .hero {
-  padding: 6rem 1.75rem 8rem;
-  min-height: 82vh;
+  /* No vh minimum: the hero's own content and padding set its height, so it stays
+     the same proportion of the page at every screen size. With min-height: 82vh it
+     grew with the window and left ~170px of empty ground on a tall monitor while
+     overflowing a short one. */
+  padding: 4rem 1.75rem 4.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -884,7 +887,7 @@ footer {
 /* ---------- Mobile refinements ---------- */
 @media (max-width: 700px) {
   body { font-size: 16.5px; }
-  .hero { padding: 4rem 1.5rem 5.5rem; min-height: 72vh; }
+  .hero { padding: 3rem 1.5rem 3.5rem; }
   :root { --section-y: 4.5rem; --section-y-first: 5rem; }
   #contact { padding: var(--section-y) 1.5rem; }
   .nav { padding: 0.9rem 1.25rem 0.9rem; }

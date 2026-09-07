@@ -564,17 +564,20 @@ blockquote {
 .tile-meta > div { display: block; }
 .tile-meta dt {
   font-family: "Inter", sans-serif;
-  font-size: 0.58rem;
+  font-size: 0.63rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--dark-muted-2);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.3rem;
 }
 .tile-meta dd {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-style: italic;
-  font-size: 0.86rem;
+  /* Cormorant's x-height is much smaller than Inter's, so matching the 0.78rem
+     body text beside it optically takes a larger nominal size. */
+  font-size: 1.08rem;
+  line-height: 1.5;
   color: var(--cream-soft);
 }
 
@@ -680,7 +683,7 @@ blockquote {
 .partner-bio .bio-meta > div { display: block; }
 .partner-bio .bio-meta dt {
   font-family: "Inter", sans-serif;
-  font-size: 0.66rem;
+  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -690,7 +693,8 @@ blockquote {
 .partner-bio .bio-meta dd {
   font-family: "Cormorant Garamond", Georgia, serif;
   font-style: italic;
-  font-size: 1.02rem;
+  font-size: 1.3rem;
+  line-height: 1.5;
   color: var(--ink-muted);
 }
 .bio-link-pending { color: var(--ink-muted); opacity: 0.55; }

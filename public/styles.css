@@ -571,13 +571,12 @@ blockquote {
   color: var(--dark-muted-2);
   margin-bottom: 0.3rem;
 }
+/* Same face, size and colour as the summary paragraph above, so the values read
+   as body text rather than as a decorative caption. Italic Cormorant was hard to
+   read here: small x-height and high stroke contrast at caption size. */
 .tile-meta dd {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-style: italic;
-  /* Cormorant's x-height is much smaller than Inter's, so matching the 0.78rem
-     body text beside it optically takes a larger nominal size. */
-  font-size: 1.08rem;
-  line-height: 1.5;
+  font-size: 0.78rem;
+  line-height: 1.55;
   color: var(--cream-soft);
 }
 
@@ -691,10 +690,8 @@ blockquote {
   margin-bottom: 0.25rem;
 }
 .partner-bio .bio-meta dd {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-style: italic;
-  font-size: 1.3rem;
-  line-height: 1.5;
+  font-size: 0.98rem;
+  line-height: 1.75;
   color: var(--ink-muted);
 }
 .bio-link-pending { color: var(--ink-muted); opacity: 0.55; }

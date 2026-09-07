@@ -3,12 +3,14 @@
 /fonts/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Portraits and the share image can be replaced under the same filename, so they get
-# a shorter window.
+# Portraits and the share image get replaced under the same filename, so they must
+# not be cached hard: a 30-day window meant a swapped portrait stayed invisible to
+# anyone who had already loaded the old one. One hour fresh, then served instantly
+# from cache while the update is fetched in the background.
 /pictures/*
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
 /og.png
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
 
 /*
   X-Content-Type-Options: nosniff

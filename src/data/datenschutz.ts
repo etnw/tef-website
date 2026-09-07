@@ -1,9 +1,10 @@
-// Draft Datenschutzerklärung. Written against what the site verifiably does:
-// no cookies are set (checked on both the production and preview responses),
-// fonts are self-hosted, and there is no analytics of any kind. Anything that
-// could not be verified is marked with REVIEW so it is not silently asserted.
+// Datenschutzerklärung. Written against what the site verifiably does: no cookies
+// are set (checked on both the production and preview responses), fonts are
+// self-hosted, and there is no analytics of any kind. Processor details were
+// verified from source: Cloudflare's DPF certification and DPA, the Workers Logs
+// retention limit, and Zeeg's registered entity and German hosting.
 //
-// PENDING QUALIFIED LEGAL REVIEW before this page is indexed or linked as final.
+// Still requires qualified legal review before it is relied upon.
 
 import { site } from './site';
 
@@ -44,9 +45,9 @@ export const sections: LegalSection[] = [
     navLabel: 'Hosting',
     heading: '3. Hosting',
     blocks: [
-      'Diese Website wird als statische Website über die Plattform Cloudflare Workers bereitgestellt. Anbieter ist die Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA, gemeinsam mit der Cloudflare Germany GmbH, Rosental 7, 80331 München.',
-      'Cloudflare verarbeitet die Daten in unserem Auftrag als Auftragsverarbeiter im Sinne des Art. 28 DSGVO. Beim Aufruf der Website werden die Inhalte über das weltweite Netzwerk von Cloudflare ausgeliefert; dabei kann es zu einer Übermittlung personenbezogener Daten, insbesondere Ihrer IP-Adresse, in Drittländer einschließlich der USA kommen.',
-      'REVIEW: Rechtsgrundlage der Drittlandsübermittlung bitte vor Veröffentlichung bestätigen (EU-US Data Privacy Framework und/oder Standardvertragsklauseln nach Art. 46 Abs. 2 lit. c DSGVO) und den abgeschlossenen Auftragsverarbeitungsvertrag benennen.',
+      'Diese Website wird als statische Website über die Plattform Cloudflare Workers bereitgestellt. Anbieter ist die Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA, in der Europäischen Union vertreten durch die Cloudflare Germany GmbH, Rosental 7, 80331 München.',
+      'Cloudflare verarbeitet die Daten in unserem Auftrag als Auftragsverarbeiter im Sinne des Art. 28 DSGVO auf Grundlage des Cloudflare Data Processing Addendum. Beim Aufruf der Website werden die Inhalte über das weltweite Netzwerk von Cloudflare ausgeliefert; dabei kann es zu einer Übermittlung personenbezogener Daten, insbesondere Ihrer IP-Adresse, in Drittländer einschließlich der USA kommen.',
+      'Cloudflare, Inc. ist nach dem EU-US Data Privacy Framework zertifiziert. Ergänzend enthält das Data Processing Addendum die Standardvertragsklauseln der Europäischen Kommission nach Art. 46 Abs. 2 lit. c DSGVO. Die Übermittlung ist damit auf zwei voneinander unabhängige Garantien gestützt.',
       'Rechtsgrundlage für den Einsatz ist Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt in einer sicheren, performanten und ausfallsicheren Bereitstellung dieser Website.',
     ],
   },
@@ -65,8 +66,8 @@ export const sections: LegalSection[] = [
         'zuvor besuchte Seite (Referrer), sofern übermittelt',
       ],
       'Diese Daten sind für uns keinem konkreten Nutzer zuordenbar und werden nicht mit anderen Datenquellen zusammengeführt. Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO zum Zweck der Auslieferung der Website sowie zur Gewährleistung von Stabilität und Sicherheit.',
+      'Die Logdaten werden von Cloudflare als Auftragsverarbeiter verarbeitet. Die auf der Workers-Plattform erhobenen Protokolldaten werden höchstens sieben Tage vorgehalten und anschließend automatisch gelöscht.',
       'Darüber hinaus übermittelt Ihr Browser über den Standard Network Error Logging technische Fehlerberichte an Cloudflare, wenn beim Abruf der Website ein Netzwerkfehler auftritt. Erfolgreiche Abrufe werden dabei nicht gemeldet.',
-      'REVIEW: Konkrete Speicherdauer der Logdaten beim Hosting-Anbieter bitte ergänzen.',
     ],
   },
   {
@@ -93,10 +94,11 @@ export const sections: LegalSection[] = [
     navLabel: 'Terminbuchung',
     heading: '7. Terminbuchung über Zeeg',
     blocks: [
-      'Für die Vereinbarung von Gesprächsterminen verlinken wir auf den externen Dienst Zeeg (zeeg.me). Die Buchungsseite ist nicht in diese Website eingebettet; es werden weder Skripte noch iFrames von Zeeg auf dieser Website geladen.',
+      'Für die Vereinbarung von Gesprächsterminen verlinken wir auf den externen Dienst Zeeg (zeeg.me). Anbieter ist die Zeeg GmbH, c/o Moghaddas, Friedrichstraße 114 A, 10117 Berlin, eingetragen im Handelsregister des Amtsgerichts Berlin (Charlottenburg) unter HRB 253807 B.',
+      'Die Buchungsseite ist nicht in diese Website eingebettet; es werden weder Skripte noch iFrames von Zeeg auf dieser Website geladen.',
       'Erst wenn Sie den Link aktiv anklicken, verlassen Sie diese Website und rufen die Seiten des Anbieters auf. Ab diesem Zeitpunkt ist der Anbieter für die Verarbeitung Ihrer Daten verantwortlich. Die von Ihnen dort eingegebenen Angaben, typischerweise Name, E-Mail-Adresse, gewünschter Termin und Zeitzone sowie gegebenenfalls eine Nachricht, werden an uns übermittelt, damit wir den Termin wahrnehmen können.',
+      'Der Anbieter verarbeitet die Daten nach eigenen Angaben ausschließlich auf Servern in Deutschland. Eine Übermittlung in ein Drittland findet insoweit nicht statt.',
       'Rechtsgrundlage für die Terminvereinbarung ist Art. 6 Abs. 1 lit. b DSGVO.',
-      'REVIEW: Vollständige Firmierung, Anschrift und Sitzland des Zeeg-Anbieters, Status des Auftragsverarbeitungsvertrags sowie Hosting-Standort bitte vor Veröffentlichung ergänzen. Diese Angaben liessen sich nicht zuverlässig ermitteln und wurden bewusst offengelassen.',
     ],
   },
   {

@@ -1,12 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { sections } from '../data/datenschutz';
-
-// Blocks beginning with REVIEW: are open questions for the reviewer, not policy
-// text. They are rendered as visibly marked notes so they cannot be mistaken for
-// finished copy or published unnoticed.
-const isReview = (b: string | string[]) =>
-  typeof b === 'string' && b.startsWith('REVIEW:');
 ---
 <BaseLayout
   title="Datenschutzerklärung — The Engine Factory"
@@ -48,8 +42,6 @@ const isReview = (b: string | string[]) =>
                   <ul class="legal-list">
                     {block.map((li) => <li>{li}</li>)}
                   </ul>
-                ) : isReview(block) ? (
-                  <p class="review-note" set:html={block.replace(/^REVIEW:\s*/, '')} />
                 ) : (
                   <p set:html={block} />
                 )
@@ -58,7 +50,7 @@ const isReview = (b: string | string[]) =>
           ))}
 
           <section class="service service-close">
-            <p class="legal-stand">Stand: 6. September 2026.</p>
+            <p class="legal-stand">Stand: 7. September 2026.</p>
           </section>
         </div>
       </div>

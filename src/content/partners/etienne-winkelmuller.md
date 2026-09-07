@@ -4,7 +4,7 @@ role: "Founder"
 location: "Munich, Germany"
 linkedin: "https://www.linkedin.com/in/etiennewinkelmuller"
 photo: "/pictures/EtienneWinkelmuller.jpg"
-domains: "automotive, radar and mmWave, timing, industrial, aerospace and defense"
+domains: "automotive, radar and mmWave, timing, industrial, aerospace and defense, OSAT"
 coverage: "Europe"
 order: 1
 ---

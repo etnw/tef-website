@@ -4,7 +4,7 @@ role: "Partner"
 location: "Munich, Germany"
 linkedin: "https://www.linkedin.com/in/michaelmatauschek/"
 photo: "/pictures/MichaelMatauschek.jpg"
-domains: "test and ATE, optical inspection, yield and supply chain"
+domains: "test and ATE, OSAT, optical inspection, yield and supply chain"
 coverage: "Europe"
 order: 3
 ---

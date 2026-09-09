@@ -1090,7 +1090,13 @@ section[id] {
     background-color: transparent;
     border-bottom: none;
     border-left: 1px solid var(--rule-cream);
+    /* Twelve entries outrun a short viewport, so the sticky column scrolls inside
+       itself rather than having its lower entries clipped off the bottom. */
+    max-height: calc(100vh - var(--header-h) - 5rem);
+    overflow-y: auto;
+    scrollbar-width: none;
   }
+  .services-nav::-webkit-scrollbar { display: none; }
   .services-nav-label { display: block; }
   .services-nav ul {
     flex-direction: column;

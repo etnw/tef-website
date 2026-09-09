@@ -2,7 +2,7 @@
 title: "Go-to-market strategy"
 anchor: "go-to-market"
 navLabel: "Go-to-market strategy"
-order: 2
+order: 3
 lead: >-
   Selection and sequencing of target markets, and the channel model used to reach them.
 blocks:

@@ -2,7 +2,7 @@
 title: "Commercial infrastructure"
 anchor: "commercial-infrastructure"
 navLabel: "Commercial infrastructure"
-order: 6
+order: 9
 lead: >-
   The pricing model, sales process, channel agreements, and contract frameworks required to move a deal from first meeting to production release.
 blocks:

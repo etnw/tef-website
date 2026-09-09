@@ -2,7 +2,7 @@
 title: "Cross-border market entry"
 anchor: "market-entry"
 navLabel: "Cross-border market entry"
-order: 3
+order: 4
 lead: >-
   Commercial representation in a region where the client has no local presence, carried out by a partner based in that region.
 blocks:

@@ -2,7 +2,7 @@
 title: "Commercial due diligence"
 anchor: "due-diligence"
 navLabel: "Commercial due diligence"
-order: 8
+order: 11
 lead: >-
   Independent assessment of the commercial position of an acquisition target, an investment candidate, or a prospective partner company.
 blocks:

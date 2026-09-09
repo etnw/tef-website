@@ -2,7 +2,7 @@
 title: "Pipeline and revenue generation"
 anchor: "pipeline"
 navLabel: "Pipeline & revenue generation"
-order: 5
+order: 8
 lead: >-
   Identification, qualification, and tracking of revenue opportunities, and the reporting built on top of them.
 blocks:

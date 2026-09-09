@@ -8,7 +8,7 @@ items:
     body: "Which customers need your product, at what price point, against which competitors."
     href: "/services/#market-intelligence"
   - heading: "Product strategy & lifecycle ownership"
-    body: "Market and competitive intelligence turned into a multi-year roadmap, prioritisation and make-or-buy decisions, and the KPIs that keep them honest. End-to-end ownership of the product line: requirements, pricing, and lifecycle, not just the launch."
+    body: "Market and competitive intelligence turned into a multi-year roadmap, prioritization and make-or-buy decisions, and the KPIs that keep them honest. End-to-end ownership of the product line: requirements, pricing, and lifecycle, not just the launch."
     href: "/services/#product-strategy"
   - heading: "Go-to-market strategy"
     body: "Which markets to enter, in what sequence, through what channels."

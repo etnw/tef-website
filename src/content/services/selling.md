@@ -2,7 +2,7 @@
 title: "Selling"
 anchor: "selling"
 navLabel: "Selling"
-order: 4
+order: 5
 lead: >-
   Direct representation of the client in front of its customers, for the duration of the engagement.
 blocks:

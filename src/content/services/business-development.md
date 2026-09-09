@@ -2,7 +2,7 @@
 title: "Business development"
 anchor: "business-development"
 navLabel: "Business development"
-order: 7
+order: 8
 lead: >-
   Revenue routes that are not direct customer sales: strategic and technology partnerships, joint development, ecosystem positioning, and licensing.
 blocks:

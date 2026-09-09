@@ -2,7 +2,7 @@
 title: "Team build-out"
 anchor: "team-buildout"
 navLabel: "Team build-out"
-order: 9
+order: 10
 lead: >-
   Recruitment, onboarding, and coaching of the client's permanent commercial team, and transfer of the operation to it.
 blocks:

@@ -15,5 +15,5 @@ items:
   - heading: "Established companies"
     body: "Expanding into markets where they lack the domain knowledge, customer relationships, and competitive intelligence to gain traction on their own."
   - heading: "Venture capital and deep-tech investors"
-    body: "Looking for a proven commercialization partner they can deploy across their portfolio companies."
+    body: "Assessing an investment deal."
 ---

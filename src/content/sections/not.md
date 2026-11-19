@@ -3,7 +3,7 @@ eyebrow: "How we are different"
 title: "<em>Operators</em>, not advisors."
 layout: "not"
 panel: true
-order: 7
+order: 6
 items:
   - heading: "Not a consulting firm"
     body: "Consulting firms deliver a slide deck, shake hands, and wish you luck with execution. We stay for the execution."

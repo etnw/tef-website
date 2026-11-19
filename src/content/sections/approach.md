@@ -2,7 +2,7 @@
 eyebrow: "How we work"
 title: "Three phases, scoped individually."
 layout: "phases"
-order: 6
+order: 7
 outro: "Not every company needs all three phases. Some need a 90-day sprint to validate a market. Others need embedded commercial leadership for two years. We scope and price every engagement individually."
 items:
   - number: "01"

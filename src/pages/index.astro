@@ -55,14 +55,6 @@ const notDifferent = (await getEntry('sections', 'not'))!;
 
       <ContentSection section={notDifferent} />
 
-      {/* The investor offer has its own page. The id stays, so /#investors links that
-          were sent out before the page existed still land on this teaser. */}
-      <section id="investors">
-        <h2 class="eyebrow">For investors</h2>
-        <p class="lede-para">Commercial due diligence for semiconductor deals, and the team to deliver the plan after you invest.</p>
-        <p class="section-more"><a href="/investors/">See the investor offer →</a></p>
-      </section>
-
     </div>
   </main>
 
@@ -76,4 +68,6 @@ const notDifferent = (await getEntry('sections', 'not'))!;
   const legacyAnchors: Record<string, string> = { how: 'approach', problem: 'who' };
   const replacement = legacyAnchors[location.hash.slice(1)];
   if (replacement) location.replace(`#${replacement}`);
+  // The investor section moved to its own page, so /#investors goes there.
+  if (location.hash === '#investors') location.replace('/investors/');
 </script>

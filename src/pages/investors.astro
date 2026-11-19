@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+
+// Copy is from the 2026-11-19 investor brief and is used verbatim: no rephrasing,
+// no em dashes, American spelling.
+
+const checks = [
+  ['Market need', 'Whether customers have a problem they will pay to solve, tested in conversations with target customers'],
+  ['Market size', 'Bottom-up TAM and SAM from applications, unit volumes and price points; the share the company can realistically win in the plan period'],
+  ['Offer and competitive position', "The value proposition against incumbents and other startups; competitors' market share, roadmaps and pricing; where the company can win and hold its position"],
+  ['Path to revenue', 'Design-in and qualification requirements, realistic time to production volume, dependencies on foundry, OSAT and channel partners; how early the company started selling, and whether it has paying customers or only pilots and evaluations'],
+  ['Pricing, channel and team', 'Price and margin, sales model, and whether the team can close production contracts, and whether planned hires follow revenue rather than the funding round'],
+];
+const receive = ['What you receive', 'A short report: what the evidence supports, assumptions still to be tested, our TAM and SAM next to the company\'s, risks ranked by impact, and questions for the founders'];
+
+const phases = [
+  ['First 90 days', 'Close the gaps the diligence found: target segments, pricing, channel, first named accounts', 'An agreed commercial plan and a live target account list'],
+  ['Embedded commercial lead', 'Two to three days a week: customer meetings, pipeline, contract negotiation', 'Design-in funnel and revenue forecast, quarter by quarter'],
+  ['Commercial team', 'When the model works, we hire the first sales lead and hand over', 'A team running a proven process'],
+];
+---
+<BaseLayout
+  title="Investors | The Engine Factory"
+  description="Commercial due diligence for semiconductor deals, and the team to deliver the plan after you invest."
+>
+  <div class="dark-wrap">
+    <section class="hero hero-compact">
+      <div class="hero-inner">
+        <span class="eyebrow">For investors</span>
+        <h1>Commercial due diligence for <em>semiconductor</em> deals.</h1>
+        <hr class="rule">
+        <p class="hero-lede">Will customers buy the product, at the price, in the volume and on the timeline your investment case assumes?</p>
+      </div>
+    </section>
+  </div>
+
+  <main>
+    <div class="container">
+
+      <section id="case">
+        <p class="lede-para">Of 431 VC-backed startups that shut down since 2023, 70% ran out of capital and 43% had poor product-market fit (<a href="https://www.cbinsights.com/blog/startup-failure-reasons-top/" target="_blank" rel="noopener">CB Insights</a>). In our experience it is the same failure: not enough paying customers, early enough.</p>
+        <p class="lede-para">We analyze a semiconductor company's commercial plan the way a product line owner reviews a roadmap before committing budget. Our partners have run a $100M business unit at 25% profit before tax and built a product line from zero to $10M+.</p>
+      </section>
+
+      <section id="before">
+        <h2>Before you <em>invest</em></h2>
+        <table class="offer-table">
+          <thead>
+            <tr>
+              <th scope="col">Area</th>
+              <th scope="col">What we check</th>
+            </tr>
+          </thead>
+          <tbody>
+            {checks.map(([area, check]) => (
+              <tr>
+                <th scope="row">{area}</th>
+                <td>{check}</td>
+              </tr>
+            ))}
+            <tr class="offer-outcome">
+              <th scope="row">{receive[0]}</th>
+              <td>{receive[1]}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="phases-note">We cover the commercial side; technical, legal and financial diligence stay with your specialists, and we work alongside them.</p>
+      </section>
+
+      <section id="after">
+        <h2>After you invest: from findings to <em>revenue</em></h2>
+        <table class="offer-table offer-table-3">
+          <thead>
+            <tr>
+              <th scope="col">Phase</th>
+              <th scope="col">What we do</th>
+              <th scope="col">What the board sees</th>
+            </tr>
+          </thead>
+          <tbody>
+            {phases.map(([phase, work, board]) => (
+              <tr>
+                <th scope="row">{phase}</th>
+                <td data-label="What we do">{work}</td>
+                <td data-label="What the board sees">{board}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p class="phases-note">The partner who did the diligence leads the work, so nothing gets lost between the deal and the plan.</p>
+      </section>
+
+      <section id="call">
+        <p class="offer-cta-text">Looking at a semiconductor deal, or a portfolio company that is short of revenue?</p>
+        <p class="contact-cta">
+          <a href={site.booking} class="btn" target="_blank" rel="noopener">Book a call</a>
+        </p>
+      </section>
+
+    </div>
+  </main>
+</BaseLayout>

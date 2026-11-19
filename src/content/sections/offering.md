@@ -36,7 +36,7 @@ items:
     href: "/services/#business-development"
   - heading: "Commercial due diligence"
     body: "Independent assessment of the commercial position of an acquisition target or investment candidate."
-    href: "/services/#due-diligence"
+    href: "/investors/"
   - heading: "Team build-out"
     body: "When you are ready, we recruit, onboard, and coach your permanent commercial team and hand over a running operation. If the team already exists, we lead and coach it through the transition, launch, or turnaround it is facing now."
     href: "/services/#team-buildout"

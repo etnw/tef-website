@@ -13,18 +13,17 @@ const offering = (await getEntry('sections', 'offering'))!;
 const why = (await getEntry('sections', 'why'))!;
 const approach = (await getEntry('sections', 'approach'))!;
 const notDifferent = (await getEntry('sections', 'not'))!;
-const investors = (await getEntry('sections', 'investors'))!;
 ---
 <BaseLayout
   title="The Engine Factory — The commercial engine for deep-tech companies"
-  description="Pipeline, pricing, customer contracts, and the team to run it. We de-risk commercial execution and compress the time between funding and first revenue for semiconductor and deep-tech companies."
+  description="Go-to-market strategy, competitive positioning, customer contracts, and the team to run it. We shorten the time between funding and first revenue for semiconductor and deep-tech companies."
 >
   <div class="dark-wrap">
     <section class="hero">
       <div class="hero-inner">
         <h1>The commercial engine for <em>deep-tech</em> companies.</h1>
         <hr class="rule">
-        <p class="hero-lede">Pipeline, pricing, customer contracts, and the team to run it. We de-risk commercial execution and compress the time between funding and first revenue.</p>
+        <p class="hero-lede">Go-to-market strategy, competitive positioning, customer contracts, and the team to run it. We shorten the time between funding and first revenue.</p>
         <p class="hero-cta">
           <a href={site.booking} class="btn" target="_blank" rel="noopener">Book a call</a>
         </p>
@@ -56,7 +55,13 @@ const investors = (await getEntry('sections', 'investors'))!;
 
       <ContentSection section={notDifferent} />
 
-      <ContentSection section={investors} />
+      {/* The investor offer has its own page. The id stays, so /#investors links that
+          were sent out before the page existed still land on this teaser. */}
+      <section id="investors">
+        <h2 class="eyebrow">For investors</h2>
+        <p class="lede-para">Commercial due diligence for semiconductor deals, and the team to deliver the plan after you invest.</p>
+        <p class="section-more"><a href="/investors/">See the investor offer →</a></p>
+      </section>
 
     </div>
   </main>

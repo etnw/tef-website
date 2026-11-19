@@ -1241,3 +1241,119 @@ section[id] {
   padding-top: 7rem;
   margin-top: 1.5rem;
 }
+
+/* ---------- Investors page tables ---------- */
+/* Row labels take the italic oxblood of the item headings, cells the muted body
+   colour of the service blocks. Below 760px each row stacks into a block, so
+   nothing scrolls sideways on a phone. */
+.offer-table {
+  width: 100%;
+  margin-top: 2.5rem;
+  border-collapse: collapse;
+  text-align: left;
+}
+.offer-table thead th {
+  font-family: "Inter", sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--oxblood);
+  padding: 0 1.5rem 0.9rem 0;
+  border-bottom: 1px solid var(--rule-cream);
+}
+.offer-table tbody th,
+.offer-table td {
+  padding: 1.4rem 1.5rem 1.4rem 0;
+  border-bottom: 1px solid rgba(201, 184, 150, 0.55);
+  vertical-align: top;
+}
+.offer-table tbody th {
+  width: 30%;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  color: var(--oxblood);
+}
+.offer-table td {
+  color: var(--ink-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.offer-table-3 tbody th { width: 24%; }
+.offer-table-3 td { width: 38%; }
+
+/* The outcome row closes the check rows: oxblood rule above, deeper cream ground. */
+.offer-table .offer-outcome th,
+.offer-table .offer-outcome td {
+  background-color: var(--cream-deep);
+  border-top: 2px solid var(--oxblood);
+  border-bottom: 0;
+  color: var(--ink-2);
+}
+.offer-table .offer-outcome th {
+  font-style: normal;
+  font-weight: 600;
+  color: var(--ink);
+  padding-left: 1.25rem;
+}
+
+.offer-cta-text {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+@media (max-width: 759px) {
+  .offer-table thead { display: none; }
+  .offer-table,
+  .offer-table tbody,
+  .offer-table tr,
+  .offer-table th,
+  .offer-table td {
+    display: block;
+    width: auto;
+  }
+  .offer-table tr {
+    padding: 1.4rem 0;
+    border-bottom: 1px solid rgba(201, 184, 150, 0.55);
+  }
+  .offer-table tbody th,
+  .offer-table td {
+    padding: 0;
+    border: 0;
+  }
+  /* The desktop column widths are more specific than the reset above. */
+  .offer-table tbody th,
+  .offer-table-3 tbody th,
+  .offer-table-3 td { width: auto; }
+  .offer-table tbody th { margin-bottom: 0.4rem; }
+  .offer-table-3 td + td { margin-top: 0.9rem; }
+  .offer-table-3 td::before {
+    content: attr(data-label);
+    display: block;
+    font-family: "Inter", sans-serif;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--oxblood);
+    margin-bottom: 0.3rem;
+  }
+  .offer-table .offer-outcome {
+    background-color: var(--cream-deep);
+    border-top: 2px solid var(--oxblood);
+    border-bottom: 0;
+    padding: 1.4rem 1.25rem;
+  }
+  .offer-table .offer-outcome th,
+  .offer-table .offer-outcome td {
+    border-top: 0;
+    padding-left: 0;
+    background: none;
+  }
+}

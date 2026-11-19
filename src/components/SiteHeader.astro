@@ -5,11 +5,11 @@ interface Props {
 }
 const { legal = false } = Astro.props;
 
-// Approach and Investors are home page anchors, not pages.
+// Approach and Contact are home page anchors, not pages.
 const links = [
   { href: '/services/', label: 'Services' },
   { href: '/#approach', label: 'Approach' },
-  { href: '/#investors', label: 'Investors' },
+  { href: '/investors/', label: 'Investors' },
   { href: '/partners/', label: 'Partners' },
   { href: '/#contact', label: 'Contact' },
 ];
@@ -22,9 +22,9 @@ const path = Astro.url.pathname;
     <nav aria-label="Primary">
       <ul>
         {links.map(({ href, label }) => {
-          // Only links to a distinct page can be the current page. Approach,
-          // Investors and Contact are anchors within the home page, so marking them
-          // current would put aria-current="page" on three items at once. The brand
+          // Only links to a distinct page can be the current page. Approach
+          // and Contact are anchors within the home page, so marking them
+          // current would put aria-current="page" on two items at once. The brand
           // carries it on the home page instead.
           const target = href.split('#')[0];
           const current = !href.includes('#') && target !== '/' && path.startsWith(target);

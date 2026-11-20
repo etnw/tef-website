@@ -5,7 +5,7 @@ layout: "items"
 order: 5
 items:
   - heading: "Proven commercial outcomes"
-    body: "Built a semiconductor product line from zero to $10M+ revenue. Created a $100M+ opportunity pipeline. Negotiated production contracts with Tier 1 automotive and industrial customers across Europe, the US, and Asia."
+    body: "Built a semiconductor product line from zero to $10M+ revenue. Created a $100M+ opportunity funnel. Negotiated production contracts with Tier 1 automotive and industrial customers across Europe, the US, and Asia."
   - heading: "We execute"
     body: "We sit in the customer meeting with you. We build your CRM. We draft the customer contract. We close the deal. Then we build the team that does it without us."
   - heading: "We speak the language"

@@ -66,6 +66,8 @@ const services = defineCollection({
     navLabel: z.string(),
     lead: z.string(),
     order: z.number(),
+    // Optional closing link to a page that covers the service in more depth.
+    more: z.object({ href: z.string(), text: z.string() }).optional(),
     // Labelled paragraphs: "Delivered", "Applies when", "Not included", "Basis",
     // "Sequence". Which labels appear varies by service.
     blocks: z

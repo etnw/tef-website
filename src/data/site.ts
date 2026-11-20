@@ -5,7 +5,7 @@ export const site = {
   name: 'The Engine Factory',
   url: 'https://theenginefactory.com',
   description:
-    'The commercial engine for deep-tech companies. Pipeline, pricing, customer contracts, and the team to run it, for semiconductor and deep-tech businesses.',
+    'The commercial engine for deep-tech companies. Go-to-market strategy, competitive positioning, customer contracts, and the team to run it, for semiconductor and deep-tech businesses.',
   legalName: 'ETNW Consulting',
   founder: 'Etienne Winkelmuller',
   email: 'contact@theenginefactory.com',

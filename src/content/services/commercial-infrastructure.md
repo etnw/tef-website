@@ -8,8 +8,8 @@ lead: >-
 blocks:
   - label: "Delivered"
     body: >-
-      pricing strategy covering cost model, margin targets, and volume tiers. Sales process definition with stage criteria. Distribution and representation network setup, agreements, and management. Customer contract frameworks for development, manufacturing, supply, and quality. Terms and conditions, forecast commitments, and liability positions, including negotiation. Commercial KPIs and reporting cadence.
+      Pricing strategy covering cost model, margin targets, and volume tiers. Sales process definition with stage criteria. Distribution and representation network setup, agreements, and management. Customer contract frameworks for development, manufacturing, supply, and quality. Terms and conditions, forecast commitments, and liability positions, including negotiation. Commercial KPIs and reporting cadence.
   - label: "Applies when"
     body: >-
-      deals stall in contract review, pricing is inconsistent across customers, distribution agreements are signed but not producing, or a first production contract is under negotiation.
+      Deals stall in contract review, pricing is inconsistent across customers, distribution agreements are signed but not producing, or a first production contract is under negotiation.
 ---

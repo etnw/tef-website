@@ -59,12 +59,13 @@ const phases = [
                 <td>{check}</td>
               </tr>
             ))}
-            <tr class="offer-outcome">
-              <th scope="row">{receive[0]}</th>
-              <td>{receive[1]}</td>
-            </tr>
           </tbody>
         </table>
+        {/* The outcome of the five checks, so it sits under the table rather than in it. */}
+        <div class="offer-outcome">
+          <h3 class="offer-outcome-label">{receive[0]}</h3>
+          <p>{receive[1]}</p>
+        </div>
         <p class="phases-note">We cover the commercial side; technical, legal and financial diligence stay with your specialists, and we work alongside them.</p>
       </section>
 

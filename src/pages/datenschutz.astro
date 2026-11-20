@@ -71,7 +71,16 @@ import { sections } from '../data/datenschutz';
         for (const entry of entries) {
           if (!entry.isIntersecting) continue;
           for (const link of links) {
-            link.classList.toggle('is-current', link.dataset.anchor === entry.target.id);
+            const current = link.dataset.anchor === entry.target.id;
+            link.classList.toggle('is-current', current);
+            // On narrow screens the nav is a single sideways-scrolling row, so it
+            // follows the page: the current entry is brought to the row's left edge.
+            // Scrolls the row itself, never the page.
+            const row = link.closest('ul');
+            if (current && row && row.scrollWidth > row.clientWidth) {
+              const left = link.getBoundingClientRect().left - row.getBoundingClientRect().left + row.scrollLeft;
+              row.scrollTo({ left, behavior: 'smooth' });
+            }
           }
         }
       },

@@ -5,7 +5,7 @@ interface Props {
   section: CollectionEntry<'sections'>;
 }
 const { section } = Astro.props;
-const { eyebrow, title, layout, intro, outro, items } = section.data;
+const { eyebrow, title, layout, intro, outro, items, collapseOnPhone } = section.data;
 
 // Maps a layout name onto the existing CSS classes from styles.css.
 const listClass = {
@@ -25,8 +25,8 @@ const itemClass = {
 <span class="eyebrow">{eyebrow}</span>
 <h2 set:html={title} />
 {intro && <p>{intro}</p>}
-<div class={listClass}>
-  {items.map((item) =>
+<div class={listClass} data-collapse={collapseOnPhone ? '' : undefined}>
+  {items.map((item, i) =>
     layout === 'phases' ? (
       <div class={itemClass}>
         <div class="phase-num">{item.number}</div>
@@ -40,9 +40,27 @@ const itemClass = {
         <h3>
           {item.href ? <a href={item.href}>{item.heading}</a> : item.heading}
         </h3>
-        <p>{item.body}</p>
+        {collapseOnPhone && (
+          <button type="button" class="item-toggle" aria-expanded="false" aria-controls={`${section.id}-item-${i}`} aria-label={`${item.heading}: details`}></button>
+        )}
+        <p id={collapseOnPhone ? `${section.id}-item-${i}` : undefined}>{item.body}</p>
       </div>
     )
   )}
 </div>
 {outro && <p class="phases-note">{outro}</p>}
+
+<script>
+  // Progressive enhancement: the list only collapses (on phones, via CSS) once this
+  // has run, so without JavaScript every body is simply readable.
+  document.querySelectorAll<HTMLElement>('[data-collapse]').forEach((list) => {
+    list.classList.add('is-collapsible');
+    list.querySelectorAll<HTMLButtonElement>('.item-toggle').forEach((button) => {
+      button.addEventListener('click', () => {
+        const open = button.getAttribute('aria-expanded') !== 'true';
+        button.setAttribute('aria-expanded', String(open));
+        button.parentElement!.classList.toggle('is-open', open);
+      });
+    });
+  });
+</script>

@@ -1451,3 +1451,60 @@ footer a:focus-visible,
 .closing-band a:focus-visible {
   outline-color: var(--cream);
 }
+
+/* ---------- Collapsible items on phones ---------- */
+/* "What we do" is twelve items, four and a half screens on a phone. Below 760px
+   each collapses to its heading with a toggle that opens the body. The heading
+   stays a link to the services page. */
+.item-toggle { display: none; }
+@media (max-width: 759px) {
+  .items.is-collapsible {
+    gap: 0;
+    border-top: 1px solid rgba(201, 184, 150, 0.55);
+  }
+  .is-collapsible .item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: 1rem;
+    border-bottom: 1px solid rgba(201, 184, 150, 0.55);
+  }
+  .is-collapsible .item h3 {
+    margin: 0;
+    padding: 0.95rem 0;
+    font-size: 1.6rem;
+  }
+  .is-collapsible .item-toggle {
+    display: block;
+    position: relative;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-right: -0.75rem;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+  /* A plus drawn from two hairlines; the upright one goes when the item is open. */
+  .is-collapsible .item-toggle::before,
+  .is-collapsible .item-toggle::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 13px;
+    height: 1.5px;
+    background-color: var(--oxblood);
+    transform: translate(-50%, -50%);
+  }
+  .is-collapsible .item-toggle::after {
+    transform: translate(-50%, -50%) rotate(90deg);
+    transition: opacity 0.2s ease;
+  }
+  .is-collapsible .item-toggle[aria-expanded="true"]::after { opacity: 0; }
+  .is-collapsible .item p {
+    display: none;
+    grid-column: 1 / -1;
+    padding-bottom: 1.25rem;
+  }
+  .is-collapsible .item.is-open p { display: block; }
+}

@@ -34,6 +34,9 @@ const sections = defineCollection({
     title: z.string(),
     layout: z.enum(['serve', 'items', 'phases', 'not']),
     panel: z.boolean().default(false),
+    // "items" layout only: on phones the items collapse to their headings, each
+    // with a toggle that opens its body.
+    collapseOnPhone: z.boolean().default(false),
     intro: z.string().optional(),
     outro: z.string().optional(),
     order: z.number().optional(),

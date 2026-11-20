@@ -2,6 +2,7 @@
 eyebrow: "What we do"
 title: "We embed with your team and operate as your commercial function from <em>Day&nbsp;1</em>."
 layout: "items"
+collapseOnPhone: true
 order: 3
 items:
   - heading: "Market & product intelligence"

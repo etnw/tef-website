@@ -24,7 +24,7 @@ const services = (await getCollection('services')).sort(
     </section>
   </div>
 
-  <main>
+  <main id="main">
     <div class="container">
       <p class="services-intro">Every engagement is scoped and priced individually. There are no fixed packages. Most clients need three or four of these, in sequence.</p>
 
@@ -32,15 +32,17 @@ const services = (await getCollection('services')).sort(
         <ServicesNav services={services} />
         <div class="services-body">
           {services.map((service) => <ServiceSection service={service} />)}
-
-          <section class="service service-close">
-            <p>Engagements are scoped and priced individually, based on stage, market, and objective.</p>
-            <p class="contact-cta">
-              <a href={site.booking} class="btn" target="_blank" rel="noopener">Book a call</a>
-            </p>
-          </section>
         </div>
       </div>
+
+      <section class="closing-band">
+        <div class="panel-inner">
+          <p>Engagements are scoped and priced individually, based on stage, market, and objective.</p>
+          <p class="contact-cta">
+            <a href={site.booking} class="btn" target="_blank" rel="noopener">Book a call</a>
+          </p>
+        </div>
+      </section>
     </div>
   </main>
 </BaseLayout>

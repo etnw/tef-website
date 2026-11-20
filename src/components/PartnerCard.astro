@@ -31,7 +31,7 @@ const bioId = `bio-${partner.id}`;
 
   {/* Everything below the portrait stays permanently visible and clickable, so
       neither the LinkedIn link nor the bio toggle is trapped behind a hover. */}
-  <figcaption class="tile-caption">
+  <div class="tile-caption">
     <h2 class="tile-name">{name}</h2>
     <p class="tile-role">{role} — {location}</p>
     {entity && <p class="tile-entity">{entity}</p>}
@@ -43,5 +43,5 @@ const bioId = `bio-${partner.id}`;
         ? <a href={linkedin} target="_blank" rel="noopener">LinkedIn →</a>
         : <span class="bio-link-pending">LinkedIn</span>}
     </p>
-  </figcaption>
+  </div>
 </article>

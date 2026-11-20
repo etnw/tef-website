@@ -35,7 +35,7 @@ const phases = [
     </section>
   </div>
 
-  <main>
+  <main id="main">
     <div class="container">
 
       <section id="case">
@@ -45,18 +45,18 @@ const phases = [
 
       <section id="before">
         <h2>Before you <em>invest</em>.</h2>
-        <table class="offer-table">
-          <thead>
-            <tr>
-              <th scope="col">Area</th>
-              <th scope="col">What we check</th>
+        <table class="offer-table" role="table">
+          <thead role="rowgroup">
+            <tr role="row">
+              <th scope="col" role="columnheader">Area</th>
+              <th scope="col" role="columnheader">What we check</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody role="rowgroup">
             {checks.map(([area, check]) => (
-              <tr>
-                <th scope="row">{area}</th>
-                <td>{check}</td>
+              <tr role="row">
+                <th scope="row" role="rowheader">{area}</th>
+                <td role="cell">{check}</td>
               </tr>
             ))}
           </tbody>
@@ -71,20 +71,20 @@ const phases = [
 
       <section id="after">
         <h2>After you invest: from findings to <em>revenue</em>.</h2>
-        <table class="offer-table offer-table-3">
-          <thead>
-            <tr>
-              <th scope="col">Phase</th>
-              <th scope="col">What we do</th>
-              <th scope="col">What the board sees</th>
+        <table class="offer-table offer-table-3" role="table">
+          <thead role="rowgroup">
+            <tr role="row">
+              <th scope="col" role="columnheader">Phase</th>
+              <th scope="col" role="columnheader">What we do</th>
+              <th scope="col" role="columnheader">What the board sees</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody role="rowgroup">
             {phases.map(([phase, work, board]) => (
-              <tr>
-                <th scope="row">{phase}</th>
-                <td data-label="What we do">{work}</td>
-                <td data-label="What the board sees">{board}</td>
+              <tr role="row">
+                <th scope="row" role="rowheader">{phase}</th>
+                <td role="cell" data-label="What we do">{work}</td>
+                <td role="cell" data-label="What the board sees">{board}</td>
               </tr>
             ))}
           </tbody>
@@ -92,11 +92,13 @@ const phases = [
         <p class="phases-note">The partner who did the diligence leads the work, so nothing gets lost between the deal and the plan.</p>
       </section>
 
-      <section id="call">
+      <section id="call" class="closing-band">
+        <div class="panel-inner">
         <p class="offer-cta-text">Looking at a semiconductor deal, or a portfolio company that is short of revenue?</p>
         <p class="contact-cta">
           <a href={site.booking} class="btn" target="_blank" rel="noopener">Book a call</a>
         </p>
+        </div>
       </section>
 
     </div>
